@@ -34,4 +34,4 @@ app.post('/api-grocery',async (req, res) => {
         console.log(error);
     }
 })
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Backend app listening on port ${port}!`))
