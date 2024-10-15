@@ -35,4 +35,8 @@ app.post('/api-grocery',async (req, res) => {
         console.log(error);
     }
 })
+app.delete('/api-grocery/:id',async (req, res) => {
+  const product =await Product.findByIdAndDelete(req.params.id);
+  res.json({products:product});
+})
 app.listen(port, () => console.log(`Backend app listening on port ${port}!`))
