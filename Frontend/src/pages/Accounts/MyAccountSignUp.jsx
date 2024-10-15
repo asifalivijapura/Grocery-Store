@@ -6,9 +6,9 @@ import ScrollToTop from "../ScrollToTop";
 const MyAccountSignUp = () => {
   return (
     <div>
-       <>
-            <ScrollToTop/>
-            </>
+      <>
+        <ScrollToTop />
+      </>
       <>
         {/* section */}
         <section className="my-lg-14 my-8">
@@ -81,10 +81,10 @@ const MyAccountSignUp = () => {
                         Register
                       </button>
                       <span className="navbar-text">
-                          Already have an account?{" "}
+                        Already have an account?{" "}
 
-                          <Link to="/MyAccountSignIn">Sign in</Link>
-                        </span>
+                        <Link to="/MyAccountSignIn">Sign in</Link>
+                      </span>
                     </div>
                     {/* text */}
                     <p>

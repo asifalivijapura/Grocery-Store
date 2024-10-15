@@ -43,15 +43,15 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Shop pages */}
-          <Route path="/Shop" element={<Shop />} />
-          {/* <Route path="/ShopGridCol3" element={<ShopGridCol3 />} /> */}
-          {/* <Route path="/ShopListCol" element={<ShopListCol />} /> */}
-          {/* <Route path="/ShopWishList" element={<ShopWishList />} /> */}
-          {/* <Route path="/ShopCheckOut" element={<ShopCheckOut />} /> */}
+          <Route path="/Product" element={<Shop />} />
+          <Route path="/ShopGridCol3" element={<ShopGridCol3 />} />
+          <Route path="/ProductDetail/:_id" element={<ShopListCol />} />
+          <Route path="/ShopWishList" element={<ShopWishList />} />
+          <Route path="/ShopCheckOut" element={<ShopCheckOut />} />
           <Route path="/ShopCart" element={<ShopCart />} />
           {/* Store pages */}
-          {/* <Route path="/StoreList" element={<StoreList />} /> */}
-          {/* <Route path="/SingleShop" element={<SingleShop />} /> */}
+          <Route path="/StoreList" element={<StoreList />} />
+          <Route path="/SingleShop" element={<SingleShop />} />
           {/* Accounts pages */}
           <Route path="/MyAccountOrder" element={<MyAccountOrder />} />
           <Route path="/MyAccountSetting" element={<MyAccountSetting />} />
@@ -62,10 +62,10 @@ const App = () => {
           <Route path="/MyAccountSignIn" element={<MyAccountSignIn />} />
           <Route path="/MyAccountSignUp" element={<MyAccountSignUp />} />
           {/* About pages */}
-          {/* <Route path="/Blog" element={<Blog />} /> */}
-          {/* <Route path="/BlogCategory" element={<BlogCategory />} /> */}
-          {/* <Route path="/Contact" element={<Contact />} /> */}
-          {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
+          <Route path="/Blog" element={<Blog />} />
+          <Route path="/BlogCategory" element={<BlogCategory />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
 
           {/* Admin site */}
           <Route path="/admin" element={<Admin />} />

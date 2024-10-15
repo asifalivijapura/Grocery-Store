@@ -37,11 +37,11 @@ const Footer = () => {
             <div className="container text-center">
               <div className="footer-copy">
                 <div className="copyright">
-                  Project created by 
+                  Project created by
                   <Link
                     target="_blank"
                   >
-                     AsifAli Vijapura
+                    AsifAli Vijapura
                   </Link>
                 </div>
               </div>

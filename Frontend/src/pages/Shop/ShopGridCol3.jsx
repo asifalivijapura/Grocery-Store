@@ -410,10 +410,10 @@ const ShopGridCol3 = () => {
                         </div>
                         {/* icon */}
                         <div className="d-flex justify-content-between align-items-center">
-                          <Link to="/ShopListCol" className="text-muted me-3">
+                          <Link to="//ProductDetail/:_id" className="text-muted me-3">
                             <i className="bi bi-list-ul" />
                           </Link>
-                          <Link to="/Shop" className="me-3 text-muted">
+                          <Link to="/Product" className="me-3 text-muted">
                             <i className="bi bi-grid-3x3-gap" />
                           </Link>
                           {/* select option */}

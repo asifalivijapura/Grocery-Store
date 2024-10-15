@@ -14,10 +14,11 @@ const AddProducts = ({ open, onCloseModal }) => {
                                 <div>
                                     <label className='label_admin_side' for="cars">Category </label> &nbsp;
                                     <select id="cars">
-                                        <option >Volvo</option>
-                                        <option >Saab</option>
-                                        <option >Opel</option>
-                                        <option >Audi</option>
+                                        <option >Fruits</option>
+                                        <option >Meat</option>
+                                        <option >Dairy</option>
+                                        <option >Vegetables</option>
+                                        <option >Snacks</option>
                                     </select>
                                 </div>
                                 <div>
@@ -27,6 +28,10 @@ const AddProducts = ({ open, onCloseModal }) => {
                                 <div>
                                     <label className='label_admin_side'>Select a file</label>&nbsp;
                                     <input type="file" name="myFile" />
+                                </div>
+                                <div>
+                                    <label className='label_admin_side'>Description</label> &nbsp;
+                                    <input type="text" name="description"></input>
                                 </div>
                                 <div>
                                     <label className='label_admin_side'>Origional Price</label>&nbsp;

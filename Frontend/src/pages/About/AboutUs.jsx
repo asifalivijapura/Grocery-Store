@@ -56,9 +56,9 @@ const AboutUs = () => {
           </div>
         ) : (
           <>
-          <>
-          <ScrollToTop/>
-          </>
+            <>
+              <ScrollToTop />
+            </>
             <>
               {/* Hero */}
               <section className="position-relative pt-5">
@@ -80,48 +80,48 @@ const AboutUs = () => {
 
                       {/* Text */}
                       <Slide direction="down">
-                      <h1 className="pb-2 pb-md-3">About Fresh Cart</h1>
-                      <h3 className="pb-2 pb-md-3">The Future of Grocery Delivery:</h3>
-                      <p
-                        className="fs-xl pb-4 mb-1 mb-md-2 mb-lg-3"
-                        style={{ maxWidth: 526 }}
-                      >
-                  By powering the future of grocery with our retail partners, 
-                  we give everyone access to the food they love and more time 
-                  to enjoy it together.
-                      </p>
-                      <img
-                        src={clutch}
-                        className=" d-dark-mode-none"
-                        width={175}
-                        alt="Clutch"
-                      />
-                      <img
-                        src="assets/img/about/clutch-light.png"
-                        className="d-none d-dark-mode-block"
-                        width={175}
-                        alt="Clutch"
-                      />
-                      <div className="row row-cols-3 pt-4 pt-md-5 mt-2 mt-xl-4">
-                        <div className="col">
-                          <h3 className="h2 mb-2">2,480</h3>
-                          <p className="mb-0">
-                            <strong>Remote</strong> Sales Experts
-                          </p>
+                        <h1 className="pb-2 pb-md-3">About Fresh Cart</h1>
+                        <h3 className="pb-2 pb-md-3">The Future of Grocery Delivery:</h3>
+                        <p
+                          className="fs-xl pb-4 mb-1 mb-md-2 mb-lg-3"
+                          style={{ maxWidth: 526 }}
+                        >
+                          By powering the future of grocery with our retail partners,
+                          we give everyone access to the food they love and more time
+                          to enjoy it together.
+                        </p>
+                        <img
+                          src={clutch}
+                          className=" d-dark-mode-none"
+                          width={175}
+                          alt="Clutch"
+                        />
+                        <img
+                          src="assets/img/about/clutch-light.png"
+                          className="d-none d-dark-mode-block"
+                          width={175}
+                          alt="Clutch"
+                        />
+                        <div className="row row-cols-3 pt-4 pt-md-5 mt-2 mt-xl-4">
+                          <div className="col">
+                            <h3 className="h2 mb-2">2,480</h3>
+                            <p className="mb-0">
+                              <strong>Remote</strong> Sales Experts
+                            </p>
+                          </div>
+                          <div className="col">
+                            <h3 className="h2 mb-2">760</h3>
+                            <p className="mb-0">
+                              <strong>New Clients</strong> per Month
+                            </p>
+                          </div>
+                          <div className="col">
+                            <h3 className="h2 mb-2">1,200</h3>
+                            <p className="mb-0">
+                              <strong>Requests</strong> per Week
+                            </p>
+                          </div>
                         </div>
-                        <div className="col">
-                          <h3 className="h2 mb-2">760</h3>
-                          <p className="mb-0">
-                            <strong>New Clients</strong> per Month
-                          </p>
-                        </div>
-                        <div className="col">
-                          <h3 className="h2 mb-2">1,200</h3>
-                          <p className="mb-0">
-                            <strong>Requests</strong> per Week
-                          </p>
-                        </div>
-                      </div>
                       </Slide>
                     </div>
                     {/* Images */}
@@ -129,11 +129,11 @@ const AboutUs = () => {
                       <div className="row row-cols-2 gx-3 gx-lg-4">
                         <div className="col pt-lg-5 mt-lg-1">
                           <Zoom>
-                          <img
-                            src={member1}
-                            className="d-block rounded-3 mb-3 mb-lg-4"
-                            alt="member"
-                          />
+                            <img
+                              src={member1}
+                              className="d-block rounded-3 mb-3 mb-lg-4"
+                              alt="member"
+                            />
                           </Zoom>
                           {/* <img
                       src={member2}
@@ -143,11 +143,11 @@ const AboutUs = () => {
                         </div>
                         <div className="col">
                           <Zoom>
-                          <img
-                            src={member3}
-                            className="d-block rounded-3 mb-3 mb-lg-4"
-                            alt="member"
-                          />
+                            <img
+                              src={member3}
+                              className="d-block rounded-3 mb-3 mb-lg-4"
+                              alt="member"
+                            />
                           </Zoom>
                           {/* <img
                       src={member4}
@@ -178,57 +178,57 @@ const AboutUs = () => {
                     <SwiperSlide className="swiper-slide border-end-lg px-2">
                       <div className="text-center">
                         <Zoom>
-                        <img
-                          src={idea}
-                          width="100"
-                          alt="Bulb icon"
-                          className="d-block mb-4 mx-auto"
-                        />
+                          <img
+                            src={idea}
+                            width="100"
+                            alt="Bulb icon"
+                            className="d-block mb-4 mx-auto"
+                          />
                         </Zoom>
                         <Slide direction="up">
-                        <h4 className="mb-2 pb-1">Creative Solutions</h4>
-                        <p className="mx-auto" style={{ maxWidth: "336px" }}>
-                          Sed morbi nulla pulvinar lectus tempor vel euismod
-                          accumsan.
-                        </p>
+                          <h4 className="mb-2 pb-1">Creative Solutions</h4>
+                          <p className="mx-auto" style={{ maxWidth: "336px" }}>
+                            Sed morbi nulla pulvinar lectus tempor vel euismod
+                            accumsan.
+                          </p>
                         </Slide>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="swiper-slide border-end-lg px-2">
                       <div className="text-center">
                         <Zoom>
-                        <img
-                          src={award}
-                          width="100"
-                          alt="Award icon"
-                          className="d-block mb-4 mx-auto"
-                        />
+                          <img
+                            src={award}
+                            width="100"
+                            alt="Award icon"
+                            className="d-block mb-4 mx-auto"
+                          />
                         </Zoom>
                         <Slide direction="up">
-                        <h4 className="mb-2 pb-1">Award Winning</h4>
-                        <p className="mx-auto" style={{ maxWidth: "336px" }}>
-                          Sit facilisis dolor arcu, fermentum vestibulum arcu
-                          elementum imperdiet.
-                        </p>
+                          <h4 className="mb-2 pb-1">Award Winning</h4>
+                          <p className="mx-auto" style={{ maxWidth: "336px" }}>
+                            Sit facilisis dolor arcu, fermentum vestibulum arcu
+                            elementum imperdiet.
+                          </p>
                         </Slide>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="swiper-slide px-2">
                       <div className="text-center">
                         <Zoom>
-                        <img
-                          src={team}
-                          width="100"
-                          alt="Team icon"
-                          className="d-block mb-4 mx-auto"
-                        />
+                          <img
+                            src={team}
+                            width="100"
+                            alt="Team icon"
+                            className="d-block mb-4 mx-auto"
+                          />
                         </Zoom>
                         <Slide direction="up">
-                        <h4 className="mb-2 pb-1">Team of Professionals</h4>
-                        <p className="mx-auto" style={{ maxWidth: "336px" }}>
-                          Nam venenatis urna aenean quis feugiat et senectus
-                          turpis.
-                        </p>
+                          <h4 className="mb-2 pb-1">Team of Professionals</h4>
+                          <p className="mx-auto" style={{ maxWidth: "336px" }}>
+                            Nam venenatis urna aenean quis feugiat et senectus
+                            turpis.
+                          </p>
                         </Slide>
                       </div>
                     </SwiperSlide>
@@ -351,7 +351,7 @@ const AboutUs = () => {
                       <div className="section-title-left pt-80">
                         <h3 className="party" style={{ fontSize: "38px" }}>
                           <Slide direction="down" delay={0.5}>
-                          Our Partners
+                            Our Partners
                           </Slide>
                         </h3>
                       </div>
@@ -362,12 +362,12 @@ const AboutUs = () => {
                       <div className="col">
                         <div className="position-relative text-center">
                           <Zoom>
-                          <img
-                            src={flipkartlogo}
-                            width={100}
-                            alt="Webby"
-                            className="d-block mx-auto mb-3"
-                          />
+                            <img
+                              src={flipkartlogo}
+                              width={100}
+                              alt="Webby"
+                              className="d-block mx-auto mb-3"
+                            />
                           </Zoom>
                           <Link
                             to="#"
@@ -380,12 +380,12 @@ const AboutUs = () => {
                       <div className="col">
                         <div className="position-relative text-center">
                           <Zoom>
-                          <img
-                            src={amazonlogo}
-                            width={100}
-                            alt="CSSDA"
-                            className="d-block mx-auto mb-3"
-                          />
+                            <img
+                              src={amazonlogo}
+                              width={100}
+                              alt="CSSDA"
+                              className="d-block mx-auto mb-3"
+                            />
                           </Zoom>
                           <Link
                             to="#"
@@ -398,13 +398,13 @@ const AboutUs = () => {
                       <div className="col">
                         <div className="position-relative text-center">
                           <Zoom>
-                          <img
-                            src={blinkit}
-                            width={100}
-                            // height={57}
-                            alt="Awwwards"
-                            className="d-block mx-auto mb-3"
-                          />
+                            <img
+                              src={blinkit}
+                              width={100}
+                              // height={57}
+                              alt="Awwwards"
+                              className="d-block mx-auto mb-3"
+                            />
                           </Zoom>
                           <Link
                             to="#"
@@ -417,12 +417,12 @@ const AboutUs = () => {
                       <div className="col">
                         <div className="position-relative text-center">
                           <Zoom>
-                          <img
-                            src={smartshop}
-                            width={100}
-                            alt="FWA"
-                            className="d-block mx-auto mb-3"
-                          />
+                            <img
+                              src={smartshop}
+                              width={100}
+                              alt="FWA"
+                              className="d-block mx-auto mb-3"
+                            />
                           </Zoom>
                           <Link
                             to="#"
@@ -448,8 +448,8 @@ const AboutUs = () => {
                   <div className="row pb-2 py-md-3 py-lg-5 px-4 px-lg-0 position-relative zindex-3">
                     <div className="col-xl-3 col-lg-4 col-md-5 offset-lg-1">
                       <Slide direction="down" delay={0.5}>
-                      <p className="lead mb-2 mb-md-3">Ready to get started?</p>
-                      <h2 className="h1 pb-3">Don’t Hesitate to Contact Us</h2>
+                        <p className="lead mb-2 mb-md-3">Ready to get started?</p>
+                        <h2 className="h1 pb-3">Don’t Hesitate to Contact Us</h2>
                       </Slide>
                     </div>
                     <form
@@ -504,14 +504,14 @@ const AboutUs = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       <button
                         type="submit"
                         className="btn btn-primary shadow-primary btn-lg"
                       >
                         Send request
                       </button>
-                       
+
                     </form>
                   </div>
                   {/* Pattern */}

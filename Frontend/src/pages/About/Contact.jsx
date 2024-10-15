@@ -31,8 +31,8 @@ const Contact = () => {
           </div>
         ) : (
           <>
-           <>
-            <ScrollToTop/>
+            <>
+              <ScrollToTop />
             </>
             <>
               {/* section */}

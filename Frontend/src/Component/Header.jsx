@@ -151,69 +151,10 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="mobile_nav">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0 float-md-right"></ul>
             <ul className="navbar-nav navbar-light">
+
               <li className="nav-item">
-                <li className="nav-item dmenu dropdown">
-                  <Link
-                    className="nav-link dropdown-toggle"
-                    to=""
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <span className="me-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        className="feather feather-grid"
-                      >
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                      </svg>
-                    </span>{" "}
-                    All Category
-                  </Link>
-                  <div
-                    className="dropdown-menu sm-menu"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <Link className="dropdown-item" to="/Shop">
-                      Dairy, Bread &amp; Eggs
-                    </Link>
-                    <Link className="dropdown-item" to="/Shop">
-                      Snacks &amp; Munchies
-                    </Link>
-                    <Link className="dropdown-item" to="/Shop">
-                      Fruits &amp; Vegetables
-                    </Link>
-                    <Link className="dropdown-item" to="/Shop">
-                      Cold Drinks &amp; Juices
-                    </Link>
-                    <Link className="dropdown-item" to="/Shop">
-                      Breakfast &amp; Instant Food
-                    </Link>
-                    <Link className="dropdown-item" to="/Shop">
-                      Bakery &amp; Biscuits
-                    </Link>
-                    <Link className="dropdown-item" to="/Shop">
-                      Chicken, Meat &amp; Fish
-                    </Link>
-                  </div>
-                </li>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Shop">
-                  Shop
+                <Link className="nav-link" to="/Product">
+                  Products
                 </Link>
               </li>
               <li className="nav-item">

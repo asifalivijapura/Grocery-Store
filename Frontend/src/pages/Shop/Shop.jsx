@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { MagnifyingGlass } from 'react-loader-spinner'
-import assortment from "../../images/assortment-citrus-fruits.png";
 import { Link } from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
-import product1 from "../../images/category-baby-care.jpg";
-import product2 from "../../images/category-atta-rice-dal.jpg";
-import product3 from "../../images/category-bakery-biscuits.jpg";
-import product4 from "../../images/category-chicken-meat-fish.jpg";
-import product5 from "../../images/category-cleaning-essentials.jpg";
-import product6 from "../../images/category-dairy-bread-eggs.jpg";
-import product7 from "../../images/category-instant-food.jpg";
-import product8 from "../../images/category-pet-care.jpg";
-import product9 from "../../images/category-snack-munchies.jpg";
-import product10 from "../../images/category-tea-coffee-drinks.jpg";
 import ScrollToTop from "../ScrollToTop";
+import { useDispatch, useSelector } from "react-redux";
+import { popularProduct } from "../../reducer/action";
 
 function Dropdown() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(popularProduct())
+  }, [popularProduct])
+
+  const Data = useSelector(state => state.home.popularProductData.data?.data)
+
+
   const [openDropdowns, setOpenDropdowns] = useState([]);
 
   const toggleDropdown = (index) => {
@@ -67,14 +67,74 @@ function Dropdown() {
                 <div className="card mb-4 bg-light border-0">
                   {/* card body */}
                   <div className=" card-body p-9">
-                    <h1 className="mb-0">Snacks &amp; Munchies</h1>
+                    <h1 className="mb-0">Category Name</h1>
                   </div>
                 </div>
                 {/* list icon */}
                 <div className="d-md-flex justify-content-between align-items-center">
-                  <div>
+                  <ul className="mb-0">
+                    <li className="nav-item">
+                      <li className="nav-item dmenu dropdown">
+                        <Link
+                          className="nav-link dropdown-toggle"
+                          to=""
+                          id="navbarDropdown"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <span className="me-1">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              className="feather feather-grid"
+                            >
+                              <rect x="3" y="3" width="7" height="7"></rect>
+                              <rect x="14" y="3" width="7" height="7"></rect>
+                              <rect x="14" y="14" width="7" height="7"></rect>
+                              <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                          </span>{" "}
+                          All Category
+                        </Link>
+                        <div
+                          className="dropdown-menu sm-menu"
+                          aria-labelledby="navbarDropdown"
+                        >
+                          <Link className="dropdown-item" to="/Product">
+                            Dairy, Bread &amp; Eggs
+                          </Link>
+                          <Link className="dropdown-item" to="/Product">
+                            Snacks &amp; Munchies
+                          </Link>
+                          <Link className="dropdown-item" to="/Product">
+                            Fruits &amp; Vegetables
+                          </Link>
+                          <Link className="dropdown-item" to="/Product">
+                            Cold Drinks &amp; Juices
+                          </Link>
+                          <Link className="dropdown-item" to="/Product">
+                            Breakfast &amp; Instant Food
+                          </Link>
+                          <Link className="dropdown-item" to="/Product">
+                            Bakery &amp; Biscuits
+                          </Link>
+                          <Link className="dropdown-item" to="/Product">
+                            Chicken, Meat &amp; Fish
+                          </Link>
+                        </div>
+                      </li>
+                    </li>
+                  </ul>
 
-                  </div>
                   {/* icon */}
                   <div className="d-flex justify-content-between align-items-center">
                     <div>
@@ -95,629 +155,77 @@ function Dropdown() {
                 {/* row */}
                 <div className="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 mt-2">
                   {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative ">
-                          <div className=" position-absolute top-0 start-0">
-                            <span className="badge bg-danger">Sale</span>
-                          </div>
-                          <Link to="#!">
-                            {/* img */}
-                            <img
-                              src={product1}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Snack &amp; Munchies</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Haldiram's Sev Bhujia
-                          </Link>
-                        </h2>
+                  {Data?.products &&
+                    Data.products.map((elem, ind) => {
+                      return (
+                        <div className="col" key={ind}>
+                          {/* card */}
+                          <div className="card card-product">
+                            <div className="card-body">
+                              {/* badge */}
+                              <div className="text-center position-relative ">
+                                <Link to={`/ProductDetail/${elem?._id}`}>
+                                  {/* img */}
+                                  <img
+                                    src={elem?.imageUrl}
+                                    className="mb-3 img-fluid"
+                                    style={{ height: '130px', width: '176px' }}
+                                  />
+                                </Link>
+                              </div>
+                              {/* heading */}
+                              <div className="text-small mb-1">
+                                <Link to={`/ProductDetail/${elem?._id}`}
+                                  className="text-decoration-none text-muted"
+                                >
+                                  <small>{elem?.category}</small>
+                                </Link>
+                              </div>
+                              <h2 className="fs-6">
+                                <Link to={`/ProductDetail/${elem?._id}`}
+                                  className="text-inherit text-decoration-none"
+                                >
+                                  {elem?.name}
+                                </Link>
+                              </h2>
 
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$18</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $24
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
+                              {/* price */}
+                              <div className="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                  <span className="text-dark">$18</span>{" "}
+                                  <span className="text-decoration-line-through text-muted">
+                                    $24
+                                  </span>
+                                </div>
+                                {/* btn */}
+                                <div>
+                                  <Link to="#!" className="btn btn-primary btn-sm">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width={16}
+                                      height={16}
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth={2}
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      className="feather feather-plus"
+                                    >
+                                      <line x1={12} y1={5} x2={12} y2={19} />
+                                      <line x1={5} y1={12} x2={19} y2={12} />
+                                    </svg>{" "}
+                                    Add
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <div className=" position-absolute top-0 start-0">
-                            <span className="badge bg-success">14%</span>
-                          </div>
-                          <Link to="#!">
-                            {/* img */}
-                            <img
-                              src={product2}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                          {/* action btn */}
+                      )
+                    })
 
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Bakery &amp; Biscuits</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            NutriChoice Digestive{" "}
-                          </Link>
-                        </h2>
-
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$24</span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <Link to="#!">
-                            <img
-                              src={product3}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                          {/* action btn */}
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Bakery &amp; Biscuits</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Cadbury 5 Star Chocolate
-                          </Link>
-                        </h2>
-
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$32</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $35
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <div className=" position-absolute top-0">
-                            <span className="badge bg-danger">hot</span>
-                          </div>
-                          <Link to="#!">
-                            {/* img */}
-                            <img
-                              src={product4}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                          {/* action btn */}
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Snack &amp; Munchies</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Onion Flavour Potato
-                          </Link>
-                        </h2>
-
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$3</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $5
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <Link to="#!">
-                            <img
-                              src={product5}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                          {/* action btn */}
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Instant Food</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Salted Instant Popcorn{" "}
-                          </Link>
-                        </h2>
-
-                        <div className="d-flex justify-content-between mt-4">
-                          <div>
-                            <span className="text-dark">$13</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $18
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative ">
-                          <div className=" position-absolute top-0">
-                            <span className="badge bg-danger">Sale</span>
-                          </div>
-                          <Link to="#!">
-                            {/* img */}
-                            <img
-                              src={product6}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                          {/* action btn */}
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Dairy, Bread &amp; Eggs</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Blueberry Greek Yogurt
-                          </Link>
-                        </h2>
-
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$18</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $24
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <Link to="#!">
-                            <img
-                              src={product7}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                          {/* action btn */}
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Dairy, Bread &amp; Eggs</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Britannia Cheese Slices
-                          </Link>
-                        </h2>
-
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$24</span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <Link to="#!">
-                            <img
-                              src={product8}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-                          {/* action btn */}
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Instant Food</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Kellogg's Original Cereals
-                          </Link>
-                        </h2>
-
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$32</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $35
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <Link to="#!">
-                            <img
-                              src={product9}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Snack &amp; Munchies</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Slurrp Millet Chocolate{" "}
-                          </Link>
-                        </h2>
-
-                        {/* price */}
-                        <div className="d-flex justify-content-between align-items-center mt-3">
-                          <div>
-                            <span className="text-dark">$3</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $5
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* col */}
-                  <div className="col">
-                    {/* card */}
-                    <div className="card card-product">
-                      <div className="card-body">
-                        {/* badge */}
-                        <div className="text-center position-relative">
-                          <Link to="#!">
-                            <img
-                              src={product10}
-                              alt="Grocery Ecommerce Template"
-                              className="mb-3 img-fluid"
-                            />
-                          </Link>
-
-                        </div>
-                        {/* heading */}
-                        <div className="text-small mb-1">
-                          <Link to="#!" className="text-decoration-none text-muted">
-                            <small>Dairy, Bread &amp; Eggs</small>
-                          </Link>
-                        </div>
-                        <h2 className="fs-6">
-                          <Link to="#!" className="text-inherit text-decoration-none">
-                            Amul Butter - 500 g
-                          </Link>
-                        </h2>
-
-                        <div className="d-flex justify-content-between mt-4">
-                          <div>
-                            <span className="text-dark">$13</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $18
-                            </span>
-                          </div>
-                          {/* btn */}
-                          <div>
-                            <Link to="#!" className="btn btn-primary btn-sm">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={16}
-                                height={16}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="feather feather-plus"
-                              >
-                                <line x1={12} y1={5} x2={12} y2={19} />
-                                <line x1={5} y1={12} x2={19} y2={12} />
-                              </svg>{" "}
-                              Add
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  }
                 </div>
               </div>
             </div>

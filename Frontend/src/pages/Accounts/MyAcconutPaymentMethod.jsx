@@ -20,9 +20,9 @@ const MyAcconutPaymentMethod = () => {
 
   return (
     <div>
-       <>
-            <ScrollToTop/>
-            </>
+      <>
+        <ScrollToTop />
+      </>
       <>
         <div>
           <section>
