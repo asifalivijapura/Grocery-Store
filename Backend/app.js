@@ -19,12 +19,13 @@ app.get('/api-grocery/:id',async (req, res) => {
   res.json({products:product});
 })
 app.post('/api-grocery',async (req, res) => {
-    const { name, category, price, quantity, description, imageUrl } = req.body;
+    const { name, category, price,discountprice, quantity, description, imageUrl } = req.body;
     try {
       const product =await Product.create({
         name,
         category,
         price,
+        discountprice,
         quantity,
         description,
         imageUrl
@@ -34,4 +35,4 @@ app.post('/api-grocery',async (req, res) => {
         console.log(error);
     }
 })
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Backend app listening on port ${port}!`))
