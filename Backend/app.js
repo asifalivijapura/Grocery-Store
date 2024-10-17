@@ -65,7 +65,7 @@ app.post('/login',async (req, res) => {
     const isMatch = await user.comparePassword(password);
 
     if(isMatch){
-      const token = jwt.sign({ username: user.username, userId: user._id}, 'shhhhh');
+      const token = jwt.sign({ username: user.username, userId: user._id}, 'shhhhhh');
       res.json(token);
     }else{
       res.json({error:"Invalid Crediantials"});
