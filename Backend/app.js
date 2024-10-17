@@ -1,7 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Product = require('./src/Model/groceryProduct')
+const User =  require('./src/Model/userModel')
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const app = express()
 
 const dbConnect = require('./db')
@@ -10,6 +12,7 @@ dbConnect();
 
 app.use(cors());
 app.use(express.json());
+// grocery
 app.get('/api-grocery',async (req, res) => {
   const products =await Product.find();
   res.json({products:products});
@@ -38,5 +41,38 @@ app.post('/api-grocery',async (req, res) => {
 app.delete('/api-grocery/:id',async (req, res) => {
   const product =await Product.findByIdAndDelete(req.params.id);
   res.json({products:product});
+})
+
+// registration
+app.post('/registation',async (req, res) => {
+  const { username, email, password } = req.body;
+  try {
+    const user =await User.create({
+      username, email, password
+  })
+  res.json({user:user})
+  } catch (error) {
+      res.json({error:error.message});
+  }
+})
+app.post('/login',async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if(!user){
+      res.json({error:"User Is Not Exisist."});
+    }
+    const isMatch = await user.comparePassword(password);
+
+    if(isMatch){
+      const token = jwt.sign({ username: user.username, userId: user._id}, 'shhhhh');
+      res.json(token);
+    }else{
+      res.json({error:"Invalid Crediantials"});
+    }
+  } catch (error) {
+      console.log(error)
+      res.json({error:error.message});
+  }
 })
 app.listen(port, () => console.log(`Backend app listening on port ${port}!`))
