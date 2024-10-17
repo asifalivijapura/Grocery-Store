@@ -332,7 +332,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       {/* badge */}
                                       <div className="col-3 text-center">
                                         {" "}
@@ -371,7 +371,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -408,7 +408,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$0.00</div>
+                                      <div className="col-3 text-center">₹0.00</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-success">Free</span>
                                       </div>
@@ -445,7 +445,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       {/* badge */}
                                       <div className="col-3 text-center">
                                         {" "}
@@ -484,7 +484,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       {/* badge */}
                                       <div className="col-3 text-center">
                                         {" "}
@@ -533,7 +533,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -570,7 +570,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -607,7 +607,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$0.00</div>
+                                      <div className="col-3 text-center">₹0.00</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-success">Free</span>
                                       </div>
@@ -644,7 +644,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -681,7 +681,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -728,7 +728,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -765,7 +765,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -802,7 +802,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$0.00</div>
+                                      <div className="col-3 text-center">₹0.00</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-success">Free</span>
                                       </div>
@@ -839,7 +839,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -876,7 +876,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -923,7 +923,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -960,7 +960,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -997,7 +997,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$0.00</div>
+                                      <div className="col-3 text-center">₹0.00</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-success">Free</span>
                                       </div>
@@ -1034,7 +1034,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1071,7 +1071,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1118,7 +1118,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1155,7 +1155,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       {/* badge */}
                                       <div className="col-3 text-center">
                                         {" "}
@@ -1194,7 +1194,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$0.00</div>
+                                      <div className="col-3 text-center">₹0.00</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-success">Free</span>
                                       </div>
@@ -1231,7 +1231,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1268,7 +1268,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1315,7 +1315,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1352,7 +1352,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1389,7 +1389,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$0.00</div>
+                                      <div className="col-3 text-center">₹0.00</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-success">Free</span>
                                       </div>
@@ -1426,7 +1426,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1463,7 +1463,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1510,7 +1510,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1547,7 +1547,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1584,7 +1584,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$0.00</div>
+                                      <div className="col-3 text-center">₹0.00</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-success">Free</span>
                                       </div>
@@ -1621,7 +1621,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -1658,7 +1658,7 @@ const ShopCheckOut = () => {
                                         </div>
                                       </div>
                                       {/* price */}
-                                      <div className="col-3 text-center">$3.99</div>
+                                      <div className="col-3 text-center">₹3.99</div>
                                       <div className="col-3 text-center">
                                         <span className="badge bg-danger">Paid</span>
                                       </div>
@@ -2015,7 +2015,7 @@ const ShopCheckOut = () => {
                                     <span>1</span>
                                   </div>
                                   <div className="col-3 text-lg-end text-start text-md-end col-md-3">
-                                    <span className="fw-bold">$5.00</span>
+                                    <span className="fw-bold">₹5.00</span>
                                   </div>
                                 </div>
                               </li>
@@ -2039,9 +2039,9 @@ const ShopCheckOut = () => {
                                     <span>1</span>
                                   </div>
                                   <div className="col-3 text-lg-end text-start text-md-end col-md-3">
-                                    <span className="fw-bold">$20.00</span>
+                                    <span className="fw-bold">₹20.00</span>
                                     <div className="text-decoration-line-through text-muted small">
-                                      $26.00
+                                      ₹26.00
                                     </div>
                                   </div>
                                 </div>
@@ -2066,9 +2066,9 @@ const ShopCheckOut = () => {
                                     <span>1</span>
                                   </div>
                                   <div className="col-3 text-lg-end text-start text-md-end col-md-3">
-                                    <span className="fw-bold">$15.00</span>
+                                    <span className="fw-bold">₹15.00</span>
                                     <div className="text-decoration-line-through text-muted small">
-                                      $20.00
+                                      ₹20.00
                                     </div>
                                   </div>
                                 </div>
@@ -2093,9 +2093,9 @@ const ShopCheckOut = () => {
                                     <span>1</span>
                                   </div>
                                   <div className="col-3 text-lg-end text-start text-md-end col-md-3">
-                                    <span className="fw-bold">$15.00</span>
+                                    <span className="fw-bold">₹15.00</span>
                                     <div className="text-decoration-line-through text-muted small">
-                                      $20.00
+                                      ₹20.00
                                     </div>
                                   </div>
                                 </div>
@@ -2104,7 +2104,7 @@ const ShopCheckOut = () => {
                               <li className="list-group-item px-4 py-3">
                                 <div className="d-flex align-items-center justify-content-between   mb-2">
                                   <div>Item Subtotal</div>
-                                  <div className="fw-bold">$70.00</div>
+                                  <div className="fw-bold">₹70.00</div>
                                 </div>
                                 <div className="d-flex align-items-center justify-content-between  ">
                                   <div>
@@ -2115,14 +2115,14 @@ const ShopCheckOut = () => {
                                       title="Default tooltip"
                                     />
                                   </div>
-                                  <div className="fw-bold">$3.00</div>
+                                  <div className="fw-bold">₹3.00</div>
                                 </div>
                               </li>
                               {/* list group item */}
                               <li className="list-group-item px-4 py-3">
                                 <div className="d-flex align-items-center justify-content-between fw-bold">
                                   <div>Subtotal</div>
-                                  <div>$73.00</div>
+                                  <div>₹73.00</div>
                                 </div>
                               </li>
                             </ul>

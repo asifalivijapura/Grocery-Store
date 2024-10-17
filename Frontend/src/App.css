@@ -37289,3 +37289,26 @@ select {
   background-color: green;
   color: white;
 }
+
+
+/* delete btn at admin side */
+
+.prod_del_btn {
+  font-size: 20px;
+  color: red;
+}
+
+.modal_cover {
+  margin: 40px;
+}
+
+.modal_contain {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.modal_contain button {
+  font-size: 20px;
+  color: white;
+}

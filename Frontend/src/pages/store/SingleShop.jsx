@@ -487,9 +487,9 @@ const SingleShop = () => {
                               {/* price */}
                               <div className="d-flex justify-content-between align-items-center mt-3">
                                 <div>
-                                  <span className="text-dark">$18</span>
+                                  <span className="text-dark">₹18</span>
                                   <span className="text-decoration-line-through text-muted">
-                                    $24
+                                  ₹24
                                   </span>
                                 </div>
                                 <div>

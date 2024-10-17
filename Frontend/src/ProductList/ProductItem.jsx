@@ -55,13 +55,25 @@ const ProductItem = ({ Data }) => {
 
                         <div className="d-flex justify-content-between align-items-center mt-3">
                           <div>
-                            <span className="text-dark">$18</span>{" "}
-                            <span className="text-decoration-line-through text-muted">
-                              $24
+                            <span className="text-dark">
+                              {elem?.discountprice &&
+                                '₹'
+                              }
+                              {
+                                elem?.discountprice &&
+                                  elem?.discountprice ? elem?.price - elem?.discountprice : null
+                              }</span>{" "}
+                            <span className={
+                              elem?.discountprice &&
+                                elem?.discountprice ?
+                                "text-decoration-line-through text-muted"
+                                : null
+                            }>
+                              ₹{elem?.price}
                             </span>
                           </div>
                           <div>
-                            <Link href="#!" className="btn btn-primary btn-sm">
+                            <Link to={'/ShopCart'} className="btn btn-primary btn-sm">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width={16}

@@ -1,35 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import signinimage from '../../images/signin-g.svg'
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
 // import Grocerylogo from '../../images/Grocerylogo.png'
 
 const MyAccountSignIn = () => {
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+  }
+  // console.log("formData in login", formData)
+
   return (
     <div>
       <>
         <div>
-          {/* navigation */}
-          {/* <div className="border-bottom shadow-sm">
-            <nav className="navbar navbar-light py-2">
-              <div className="container justify-content-center justify-content-lg-between">
-                <Link className="navbar-brand" to="../index.html">
-                  <img
-                    src={Grocerylogo}
-                    alt="freshcart"
-                    className="d-inline-block align-text-top"
-                  />
-                </Link>
-                <span className="navbar-text">
-                  Already have an account? <Link to="signin.html">Sign in</Link>
-                </span>
-              </div>
-            </nav>
-          </div> */}
-          {/* section */}
           <>
-            <ScrollToTop/>
-            </>
+            <ScrollToTop />
+          </>
           <section className="my-lg-14 my-8">
             <div className="container">
               {/* row */}
@@ -51,56 +53,38 @@ const MyAccountSignIn = () => {
                       started.
                     </p>
                   </div>
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="row g-3">
                       {/* row */}
                       <div className="col-12">
                         {/* input */}
                         <input
-                          type="email"
                           className="form-control"
-                          id="inputEmail4"
+                          type="email"
                           placeholder="Email"
+                          value={formData?.email}
+                          name="email"
                           required
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="col-12">
                         {/* input */}
                         <input
-                          type="password"
                           className="form-control"
-                          id="inputPassword4"
+                          type="password"
+                          name="password"
                           placeholder="Password"
+                          value={formData?.password}
+                          onChange={handleChange}
                           required
+
                         />
-                      </div>
-                      <div className="d-flex justify-content-between">
-                        {/* form check */}
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            defaultValue
-                            id="flexCheckDefault"
-                          />
-                          {/* label */}{" "}
-                          <label
-                            className="form-check-label"
-                            htmlFor="flexCheckDefault"
-                          >
-                            Remember me
-                          </label>
-                        </div>
-                        <div>
-                          {" "}
-                          Forgot password?{" "}
-                          <Link to="/MyAccountForgetPassword">Reset it</Link>
-                        </div>
                       </div>
                       {/* btn */}
                       <div className="col-12 d-grid">
                         {" "}
-                        <button type="submit" className="btn btn-primary">
+                        <button className="btn btn-primary">
                           Sign In
                         </button>
                       </div>

@@ -43,7 +43,7 @@ const productSchema = new mongoose.Schema({
 });
 
 // Middleware to update the updatedAt field
-productSchema.pre('save', function(next) {
+productSchema.pre('save', function (next) {
     this.updatedAt = Date.now();
     next();
 });

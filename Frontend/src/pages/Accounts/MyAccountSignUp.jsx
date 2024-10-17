@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import signupimage from '../../images/signup-g.svg'
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
 
 const MyAccountSignUp = () => {
+
+  const [formData, setFormData] = useState({
+    userName: '',
+    email: '',
+    password: ''
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+  }
+
+  // console.log("formData in signUp", formData)
+
   return (
     <div>
       <>
@@ -31,26 +53,18 @@ const MyAccountSignUp = () => {
                   <p>Welcome to FreshCart! Enter your email to get started.</p>
                 </div>
                 {/* form */}
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="row g-3">
                     {/* col */}
-                    <div className="col">
+                    <div className="col-12">
                       {/* input */}
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="First name"
-                        aria-label="First name"
-                        required
-                      />
-                    </div>
-                    <div className="col">
-                      {/* input */}
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Last name"
-                        aria-label="Last name"
+                        placeholder="User Name"
+                        name="userName"
+                        value={formData?.userName}
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -59,8 +73,10 @@ const MyAccountSignUp = () => {
                       <input
                         type="email"
                         className="form-control"
-                        id="inputEmail4"
                         placeholder="Email"
+                        name="email"
+                        value={formData?.email}
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -69,31 +85,23 @@ const MyAccountSignUp = () => {
                       <input
                         type="password"
                         className="form-control"
-                        id="inputPassword4"
                         placeholder="Password"
+                        name="password"
+                        value={formData?.password}
+                        onChange={handleChange}
                         required
                       />
                     </div>
                     {/* btn */}
                     <div className="col-12 d-grid">
-                      {" "}
                       <button type="submit" className="btn btn-primary">
                         Register
                       </button>
                       <span className="navbar-text">
-                        Already have an account?{" "}
-
-                        <Link to="/MyAccountSignIn">Sign in</Link>
+                        Already have an account?
+                        <Link to="/MyAccountSignIn" style={{ color: '#0aad0a' }}>Sign in</Link>
                       </span>
                     </div>
-                    {/* text */}
-                    <p>
-                      <small>
-                        By continuing, you agree to our{" "}
-                        <Link to="#!"> Terms of Service</Link> &amp;{" "}
-                        <Link to="#!">Privacy Policy</Link>
-                      </small>
-                    </p>
                   </div>
                 </form>
               </div>

@@ -8,6 +8,11 @@ import { popularProduct } from "../../reducer/action";
 
 function Dropdown() {
 
+  const options = ['Fruits', 'Vegetables', 'Dairy', 'Meat', 'Grains', 'Beverages', 'Snacks']
+
+  const [selectedProduct, setSelectedProduct] = useState('All Category')
+  const [sortOrder, setSortOrder] = useState('default')
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -15,18 +20,6 @@ function Dropdown() {
   }, [popularProduct])
 
   const Data = useSelector(state => state.home.popularProductData.data?.data)
-
-
-  const [openDropdowns, setOpenDropdowns] = useState([]);
-
-  const toggleDropdown = (index) => {
-    if (openDropdowns.includes(index)) {
-      setOpenDropdowns(openDropdowns.filter((item) => item !== index));
-    } else {
-      setOpenDropdowns([...openDropdowns, index]);
-    }
-  };
-
   // loading
   const [loaderStatus, setLoaderStatus] = useState(true);
   useEffect(() => {
@@ -34,6 +27,22 @@ function Dropdown() {
       setLoaderStatus(false);
     }, 1500);
   }, []);
+
+  const filteredData = selectedProduct === 'All Category' ? Data?.products : Data?.products?.filter(product => product?.category === selectedProduct)
+
+  const sortedData = filteredData ? [...filteredData].sort((a, b) => {
+    // console.log("filtered a :", a)
+    // console.log("filtered b :", b)
+    if (sortOrder === 'Low to High') {
+      // console.log("a", a)
+      // console.log("b", b)
+      return a.price - b.price
+    } else if (sortOrder === 'High to Low') {
+      return b.price - a.price
+    } else {
+      return 0;
+    }
+  }) : []
 
   return (
     <div>
@@ -67,7 +76,12 @@ function Dropdown() {
                 <div className="card mb-4 bg-light border-0">
                   {/* card body */}
                   <div className=" card-body p-9">
-                    <h1 className="mb-0">Category Name</h1>
+                    <h1 className="mb-0">
+                      {
+                        selectedProduct &&
+                          selectedProduct ? selectedProduct : 'All Category'
+                      }
+                    </h1>
                   </div>
                 </div>
                 {/* list icon */}
@@ -77,12 +91,12 @@ function Dropdown() {
                       <li className="nav-item dmenu dropdown">
                         <Link
                           className="nav-link dropdown-toggle"
-                          to=""
                           id="navbarDropdown"
                           role="button"
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
+                          onClick={() => { setSelectedProduct('All Category') }}
                         >
                           <span className="me-1">
                             <svg
@@ -105,32 +119,23 @@ function Dropdown() {
                           </span>{" "}
                           All Category
                         </Link>
-                        <div
+                        < div
+
                           className="dropdown-menu sm-menu"
                           aria-labelledby="navbarDropdown"
                         >
-                          <Link className="dropdown-item" to="/Product">
-                            Dairy, Bread &amp; Eggs
-                          </Link>
-                          <Link className="dropdown-item" to="/Product">
-                            Snacks &amp; Munchies
-                          </Link>
-                          <Link className="dropdown-item" to="/Product">
-                            Fruits &amp; Vegetables
-                          </Link>
-                          <Link className="dropdown-item" to="/Product">
-                            Cold Drinks &amp; Juices
-                          </Link>
-                          <Link className="dropdown-item" to="/Product">
-                            Breakfast &amp; Instant Food
-                          </Link>
-                          <Link className="dropdown-item" to="/Product">
-                            Bakery &amp; Biscuits
-                          </Link>
-                          <Link className="dropdown-item" to="/Product">
-                            Chicken, Meat &amp; Fish
-                          </Link>
+                          {options &&
+                            options.map((element, index) => {
+                              // console.log("element", element)
+                              return (
+                                <Link key={index} className="dropdown-item" onClick={() => setSelectedProduct(element)}>
+                                  {element}
+                                </Link>
+                              )
+                            })
+                          }
                         </div>
+
                       </li>
                     </li>
                   </ul>
@@ -142,12 +147,12 @@ function Dropdown() {
                       <select
                         className="form-select"
                         aria-label="Default select example"
+                        value={sortOrder}
+                        onChange={(e) => setSortOrder(e.target.value)}
                       >
-                        <option selected>Sort by: Featured</option>
+                        <option value="default">Sort by : default</option>
                         <option value="Low to High">Price: Low to High</option>
                         <option value="High to Low"> Price: High to Low</option>
-                        <option value="Release Date"> Release Date</option>
-                        <option value="Avg. Rating"> Avg. Rating</option>
                       </select>
                     </div>
                   </div>
@@ -155,8 +160,8 @@ function Dropdown() {
                 {/* row */}
                 <div className="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 mt-2">
                   {/* col */}
-                  {Data?.products &&
-                    Data.products.map((elem, ind) => {
+                  {sortedData &&
+                    sortedData.map((elem, ind) => {
                       return (
                         <div className="col" key={ind}>
                           {/* card */}
@@ -192,14 +197,26 @@ function Dropdown() {
                               {/* price */}
                               <div className="d-flex justify-content-between align-items-center mt-3">
                                 <div>
-                                  <span className="text-dark">$18</span>{" "}
-                                  <span className="text-decoration-line-through text-muted">
-                                    $24
+                                  <span className="text-dark">
+                                    {elem?.discountprice &&
+                                      '₹'
+                                    }
+                                    {
+                                      elem?.discountprice &&
+                                        elem?.discountprice ? elem?.price - elem?.discountprice : null
+                                    }</span>{" "}
+                                  <span className={
+                                    elem?.discountprice &&
+                                      elem?.discountprice ?
+                                      "text-decoration-line-through text-muted"
+                                      : null
+                                  }>
+                                    ₹{elem?.price}
                                   </span>
                                 </div>
                                 {/* btn */}
                                 <div>
-                                  <Link to="#!" className="btn btn-primary btn-sm">
+                                  <Link to={'/ShopCart'} className="btn btn-primary btn-sm">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       width={16}
@@ -231,8 +248,9 @@ function Dropdown() {
             </div>
           </div>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 

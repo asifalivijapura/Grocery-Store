@@ -89,11 +89,11 @@ const Hero = () => {
                                 >
                                     <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center">
                                         <span className="badge text-bg-warning">
-                                            Free Shipping - orders over $100
+                                            Free Shipping - orders over ₹499
                                         </span>
                                         <h2 className="text-dark display-5 fw-bold mt-4">
                                             Free Shipping on <br /> orders over{" "}
-                                            <span className="text-primary">$100</span>
+                                            <span className="text-primary">₹499</span>
                                         </h2>
                                         <p className="lead">
                                             Free Shipping to First-Time Customers Only, After

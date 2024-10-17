@@ -1,35 +1,83 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaEye } from "react-icons/fa";
+import Modal from 'react-responsive-modal';
 import { Link } from 'react-router-dom';
 
 
-const AdminLogin = () => {
+const AdminLogin = ({ setShowHeader, login, data, setLogin }) => {
+    // console.log("Dtaa", data)
+    setShowHeader(false)
+
+    const [showPassword, setShowPassword] = useState(false)
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("formData.email", formData.email)
+        console.log("data.adminEmail", data.adminEmail)
+        console.log("formData.password", formData.password)
+        console.log("data.adminPassword", data.adminPassword)
+        if (formData.email === data.adminEmail && formData.password === data.adminPassword) {
+            alert('Login SuccessFull')
+            setLogin(false)
+            localStorage.setItem("isLoggedIn", true)
+        } else {
+            alert('Incorrect Email or PassWord')
+            setLogin(true)
+        }
+    }
+
     return (
         <>
-            <div class="login-container">
-                <div class="login-box">
-                    {/* <!-- Heading --> */}
-                    <h2>Log In to your account</h2>
-                    {/* <!-- Form --> */}
-                    <form>
-                        <div class="input-group">
-                            <input type="email" placeholder="Email" required />
-                        </div>
-                        <div class="input-group">
-                            <input type="password" placeholder="Password" required />
-                            <span class="toggle-password">
-                                <FaEye />
-                            </span>
-                        </div>
-                        {/* <!-- Forgot Password --> */}
-                        <a href="#" class="forgot-password">
-                            <Link to={'/'}>Back to user</Link>
-                        </a>
-                        {/* <!-- Login Button --> */}
-                        <button type="submit" class="login-btn">Log In</button>
-                    </form>
+            <Modal open={login} onClose={() => { }}>
+                <div class="login-container">
+                    <div class="login-box">
+                        <h2>Log In to your account</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div class="input-group">
+                                <input
+                                    name='email'
+                                    type="email"
+                                    placeholder="Email"
+                                    value={formData?.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div class="input-group">
+                                <input
+                                    name='password'
+                                    type={showPassword &&
+                                        showPassword ? 'text' : 'password'
+                                    }
+                                    placeholder="Password"
+                                    value={formData?.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <span class="toggle-password">
+                                    <FaEye onClick={() => setShowPassword(!showPassword)} />
+                                </span>
+                            </div>
+                            <a class="forgot-password">
+                                <Link to={'/'} >Back to user</Link>
+                            </a>
+                            <button class="login-btn">Log In</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </Modal>
         </>
     )
 }

@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { popularProduct } from "../reducer/action";
 const Home = () => {
 
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,8 +21,6 @@ const Home = () => {
 
   const Data = useSelector(state => state.home.popularProductData.data?.data)
   // console.log('Data', Data)
-
-
   // loading
   const [loaderStatus, setLoaderStatus] = useState(true);
   useEffect(() => {

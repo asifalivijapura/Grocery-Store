@@ -29,7 +29,7 @@ const Barner = () => {
                                                 personal care{" "}
                                             </h3>
                                             <div className="mt-4 mb-5 fs-5">
-                                                <p className="mb-0">Max cashback: $12</p>
+                                                <p className="mb-0">Max cashback: ₹999</p>
                                                 <span>
                                                     Code:{" "}
                                                     <span className="fw-bold text-dark">

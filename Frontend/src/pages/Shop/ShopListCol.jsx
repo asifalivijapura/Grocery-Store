@@ -91,9 +91,21 @@ const ShopListCol = () => {
                                   {/* Price */}
                                   <div className="mt-2">
                                     <div>
-                                      <span className="text-dark">$18</span>{" "}
-                                      <span className="text-decoration-line-through text-muted">
-                                        $24
+                                      <span className="text-dark">
+                                        {Data?.products?.discountprice &&
+                                          '$'
+                                        }
+                                        {
+                                          Data?.products?.discountprice &&
+                                            Data?.products?.discountprice ? Data?.products?.price - Data?.products?.discountprice : null
+                                        }</span>{" "}
+                                      <span className={
+                                        Data?.products?.discountprice &&
+                                          Data?.products?.discountprice ?
+                                          "text-decoration-line-through text-muted"
+                                          : null
+                                      }>
+                                        ${Data?.products?.price}
                                       </span>
                                     </div>
                                   </div>
@@ -106,7 +118,7 @@ const ShopListCol = () => {
                                   {/* Buttons */}
                                   <div className="mt-4">
                                     <Link
-                                      to="#!"
+                                      to={'/ShopCart'}
                                       className="btn btn-primary me-2"
                                     >
                                       <FaCartPlus className="addToCart" />

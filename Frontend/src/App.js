@@ -1,5 +1,5 @@
 // react 
-import React from "react";
+import React, { useState } from "react";
 // css
 import "./App.css";
 // browserrouter 
@@ -34,12 +34,19 @@ import MyAccountForgetPassword from "./pages/Accounts/MyAccountForgetPassword";
 import MyAccountSignIn from "./pages/Accounts/MyAccountSignIn";
 import MyAccountSignUp from "./pages/Accounts/MyAccountSignUp";
 import Admin from "./Component/AdminSite/Admin";
-import AdminLogin from "./Component/AdminSite/AdminLogin";
 const App = () => {
+  const data = {
+    adminEmail: "asifali54321@gmail.com",
+    adminPassword: "AsifAli098"
+  }
+  const [showHeader, setShowHeader] = useState(true)
   return (
     <div>
       <Router>
-        <Header />
+        {showHeader && showHeader ?
+          <Header />
+          : null
+        }
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Shop pages */}
@@ -68,11 +75,13 @@ const App = () => {
           <Route path="/AboutUs" element={<AboutUs />} />
 
           {/* Admin site */}
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/adminLogin" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin data={data} setShowHeader={setShowHeader} />} />
 
         </Routes>
-        <Footer />
+        {showHeader && showHeader ?
+          <Footer />
+          : null
+        }
       </Router>
     </div>
   );
