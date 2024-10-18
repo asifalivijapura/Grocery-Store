@@ -60,9 +60,9 @@ app.post("/registation", async (req, res) => {
             email,
             password,
         });
-        res.json({ user: user });
+        res.json({ user: user, status: 1 });
     } catch (error) {
-        res.json({ error: error.message });
+        res.json({ error: error.message, status: 0 });
     }
 });
 app.post("/login", async (req, res) => {
