@@ -62,6 +62,12 @@ app.post("/registation", async (req, res) => {
         });
         res.json({ user: user, status: 1 });
     } catch (error) {
+        if (error.code === 11000) {
+            // Handle duplicate key error
+            return res
+                .status(409)
+                .json({ error: "User already exists.", status: 0 }); // 409 Conflict
+        }
         res.json({ error: error.message, status: 0 });
     }
 });
