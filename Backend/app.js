@@ -79,9 +79,11 @@ app.post("/login", async (req, res) => {
                 { username: user.username, userId: user._id },
                 "shhhhh"
             );
-            return res.json({ token: token, status: 1 });
+            return res.status(200).json({ token: token, status: 1 });
         } else {
-            return res.json({ error: "Invalid Crediantials", status: 0 });
+            return res
+                .status(401)
+                .json({ error: "Invalid Credentials", status: 0 });
         }
     } catch (error) {
         console.log(error);
