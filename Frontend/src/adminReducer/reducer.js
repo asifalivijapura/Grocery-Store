@@ -19,7 +19,7 @@ const adminDashboard = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(postDataFromData.fulfilled, (state, action) => {
-                console.log("action.payload", action.payload)
+                // console.log("action.payload", action.payload)
                 state.dashboardData.isLoading = false;
                 state.dashboardData.data = action.payload;
             })

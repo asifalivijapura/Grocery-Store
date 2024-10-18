@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { popularProduct, productDetails } from "./action";
+import { loginData, popularProduct, productDetails, registerData } from "./action";
 
 
 const homeDashboard = createSlice({
@@ -13,6 +13,16 @@ const homeDashboard = createSlice({
         prodDetails: {
             isLoading: false,
             detail: null,
+            isError: false,
+        },
+        registerDetails: {
+            isLoading: false,
+            registerList: null,
+            isError: false,
+        },
+        loginDetails: {
+            isLoading: false,
+            loginList: null,
             isError: false,
         }
     },
@@ -34,7 +44,7 @@ const homeDashboard = createSlice({
             })
             // Product details
             .addCase(productDetails.fulfilled, (state, action) => {
-                console.log("action", action.payload);
+                // console.log("action", action.payload);
                 state.prodDetails.isLoading = false;
                 state.prodDetails.detail = action.payload;
             })
@@ -43,6 +53,28 @@ const homeDashboard = createSlice({
             })
             .addCase(productDetails.rejected, (state, action) => {
                 state.prodDetails.isError = true;
+            })
+            //register Api 
+            .addCase(registerData.fulfilled, (state, action) => {
+                state.registerDetails.isLoading = false;
+                state.registerDetails.registerList = action.payload;
+            })
+            .addCase(registerData.pending, (state, action) => {
+                state.registerDetails.isLoading = true;
+            })
+            .addCase(registerData.rejected, (state, action) => {
+                state.registerDetails.isError = true
+            })
+            // Login
+            .addCase(loginData.fulfilled, (state, action) => {
+                state.loginDetails.isLoading = false;
+                state.loginDetails.loginList = action.payload;
+            })
+            .addCase(loginData.pending, (state, action) => {
+                state.loginDetails.isLoading = true;
+            })
+            .addCase(loginData.rejected, (state, action) => {
+                state.loginDetails.isError = true
             })
     }
 })

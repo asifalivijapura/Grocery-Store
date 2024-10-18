@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import signinimage from '../../images/signin-g.svg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { useDispatch, useSelector } from "react-redux";
+import { loginData } from "../../reducer/action";
+import { jwtDecode } from "jwt-decode"
 // import Grocerylogo from '../../images/Grocerylogo.png'
 
 const MyAccountSignIn = () => {
 
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
+  const Data = useSelector(state => state.home.loginDetails.loginList)
+  console.log("Data near Data", Data)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -21,9 +30,21 @@ const MyAccountSignIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    dispatch(loginData(formData))
+    if (Data && Data?.data?.error) {
+      console.log("Data error ", Data?.data?.error)
+      alert(Data?.data?.error)
+      if (Data?.data?.status === 0) {
+        navigate('/MyAccountSignUp')
+      }
+    } else if (Data && Data?.data?.token) {
+      console.log("Data", Data?.data)
+      alert('user Logged In Successfulll')
+      if (Data?.data?.status === 1) {
+        navigate('/')
+      }
+    }
   }
-  // console.log("formData in login", formData)
 
   return (
     <div>

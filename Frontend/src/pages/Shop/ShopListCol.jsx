@@ -17,7 +17,7 @@ const ShopListCol = () => {
   }, [productDetails])
 
   const Data = useSelector(state => state.home.prodDetails.detail)
-  console.log("Data", Data?.products)
+  // console.log("Data", Data?.products)
 
   // loading
   const [loaderStatus, setLoaderStatus] = useState(true);

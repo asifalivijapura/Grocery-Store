@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import signupimage from '../../images/signup-g.svg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { useDispatch, useSelector } from "react-redux";
+import { registerData } from "../../reducer/action";
 
 const MyAccountSignUp = () => {
 
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
   const [formData, setFormData] = useState({
-    userName: '',
+    username: '',
     email: '',
     password: ''
   })
@@ -21,7 +27,13 @@ const MyAccountSignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    dispatch(registerData(formData))
+    navigate('/MyAccountSignIn')
+    setFormData({
+      username: '',
+      email: '',
+      password: ''
+    })
   }
 
   // console.log("formData in signUp", formData)
@@ -62,8 +74,8 @@ const MyAccountSignUp = () => {
                         type="text"
                         className="form-control"
                         placeholder="User Name"
-                        name="userName"
-                        value={formData?.userName}
+                        name="username"
+                        value={formData?.username}
                         onChange={handleChange}
                         required
                       />

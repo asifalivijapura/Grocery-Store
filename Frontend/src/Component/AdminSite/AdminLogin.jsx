@@ -24,10 +24,6 @@ const AdminLogin = ({ setShowHeader, login, data, setLogin }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("formData.email", formData.email)
-        console.log("data.adminEmail", data.adminEmail)
-        console.log("formData.password", formData.password)
-        console.log("data.adminPassword", data.adminPassword)
         if (formData.email === data.adminEmail && formData.password === data.adminPassword) {
             alert('Login SuccessFull')
             setLogin(false)
