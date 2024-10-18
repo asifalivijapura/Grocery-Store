@@ -70,22 +70,25 @@ app.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({ email });
         if (!user) {
-            return res.json({ error: "User Is Not Exisist." });
+            return res.status(404).json({ error: "User Does Not Exist." });
         }
-        const isMatch = await user.comparePassword(password);
 
+        const isMatch = await user.comparePassword(password);
         if (isMatch) {
             const token = jwt.sign(
                 { username: user.username, userId: user._id },
                 "shhhhh"
             );
-            return res.json({ token: token }, { status: 1 });
+            return res.status(200).json({ token: token, status: 1 });
         } else {
-            return res.json({ error: "Invalid Crediantials" }, { status: 0 });
+            return res
+                .status(401)
+                .json({ error: "Invalid Credentials", status: 0 });
         }
     } catch (error) {
         console.log(error);
-        res.json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 });
+
 app.listen(port, () => console.log(`Backend app listening on port ${port}!`));
