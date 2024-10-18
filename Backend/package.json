@@ -16,9 +16,7 @@
     "express": "^4.21.1",
     "grocerystore": "file:",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.7.1"
-  },
-  "devDependencies": {
+    "mongoose": "^8.7.1",
     "nodemon": "^3.1.7"
   }
 }
