@@ -79,9 +79,9 @@ app.post("/login", async (req, res) => {
                 { username: user.username, userId: user._id },
                 "shhhhh"
             );
-            return res.json({ token: token }, { status: 1 });
+            return res.json({ token: token, status: 1 });
         } else {
-            return res.json({ error: "Invalid Crediantials" }, { status: 0 });
+            return res.json({ error: "Invalid Crediantials", status: 0 });
         }
     } catch (error) {
         console.log(error);
