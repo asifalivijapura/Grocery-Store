@@ -116,8 +116,13 @@ app.post("/addtocart", async (req, res) => {
 app.post("/viewcart", async (req, res) => {
     const { userId } = req.body;
     try {
-        const cart = await Cart.find({ user: userId });
+        const cart = await Cart.findOne({ user: userId }).populate(
+            "products.product"
+        );
 
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
         res.json({ cart: cart });
     } catch (error) {
         res.json({ error: error });
