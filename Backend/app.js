@@ -102,11 +102,21 @@ app.post("/login", async (req, res) => {
 app.post("/addtocart", async (req, res) => {
     const { userId, productId, quantity } = req.body;
     try {
-        const cart = Cart.create({
+        const cart = await Cart.create({
             user: userId,
-            products: [{ product: productId }, quantity],
+            products: [{ product: productId, quantity: quantity }],
         });
-        res.json({ cart: cart, status: 1 });
+        res.json({ cart, status: 1 });
+    } catch (error) {
+        res.json({ error: error });
+    }
+});
+app.post("/viewcart", async (req, res) => {
+    const { userId } = req.body;
+    try {
+        const cart = await Cart.find({ user: userId });
+
+        res.json({ cart: cart });
     } catch (error) {
         res.json({ error: error });
         console.log("error", error)
