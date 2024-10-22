@@ -1,19 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { MagnifyingGlass } from 'react-loader-spinner'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import ScrollToTop from "../ScrollToTop";
 import { useDispatch, useSelector } from "react-redux";
 import { popularProduct } from "../../reducer/action";
+import { addToCart } from "../../addtocart/action";
+import { checkLocalStorageData } from "../../localReducer/reducer";
 
 function Dropdown() {
+  // addToCart
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const localData = useSelector((state) => state?.local?.dataAvailable)
+  // console.log("localData", localData)
+
+  useEffect(() => {
+    dispatch(checkLocalStorageData())
+  }, [checkLocalStorageData])
+
+  const toCart = (data) => {
+    const productId = data?._id
+    const userId = localStorage.getItem('userId')
+    const quantity = 1
+    const Data = {
+      userId,
+      productId,
+      quantity
+    }
+    dispatch(addToCart(Data))
+  }
+
+  const toLoggin = () => {
+    navigate('/MyAccountSignIn')
+  }
+
+  // category
 
   const options = ['Fruits', 'Vegetables', 'Dairy', 'Meat', 'Grains', 'Beverages', 'Snacks']
 
   const [selectedProduct, setSelectedProduct] = useState('All Category')
   const [sortOrder, setSortOrder] = useState('default')
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(popularProduct())
@@ -216,7 +245,7 @@ function Dropdown() {
                                 </div>
                                 {/* btn */}
                                 <div>
-                                  <Link to={'/ShopCart'} className="btn btn-primary btn-sm">
+                                  <button onClick={localData && localData ? () => toCart(elem) : toLoggin} className="btn btn-primary btn-sm">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       width={16}
@@ -233,7 +262,7 @@ function Dropdown() {
                                       <line x1={5} y1={12} x2={19} y2={12} />
                                     </svg>{" "}
                                     Add
-                                  </Link>
+                                  </button>
                                 </div>
                               </div>
                             </div>
