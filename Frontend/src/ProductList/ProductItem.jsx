@@ -1,7 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { checkLocalStorageData } from "../localReducer/reducer";
+import { addToCart } from "../addtocart/action";
 
 const ProductItem = ({ Data }) => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const localData = useSelector((state) => state?.local?.dataAvailable)
+  // console.log("localData", localData)
+
+  useEffect(() => {
+    dispatch(checkLocalStorageData())
+  }, [checkLocalStorageData])
+
+  const toCart = (data) => {
+    const productId = data?._id
+    const userId = localStorage.getItem('userId')
+    const quentity = 1
+    const Data = {
+      userId,
+      productId,
+      quentity
+    }
+    dispatch(addToCart(Data))
+  }
+
+  const toLoggin = () => {
+    navigate('MyAccountSignIn')
+  }
+
   return (
     <div>
       {/* Popular Products Start*/}
@@ -22,6 +51,7 @@ const ProductItem = ({ Data }) => {
           <div className="row g-4 row-cols-lg-5 row-cols-2 row-cols-md-3">
             {Data?.products &&
               Data?.products.slice(0, 10).map((elem, idx) => {
+                // console.log("elem", elem)
                 return (
                   <div className="col fade-zoom" key={idx}>
                     <div className="card card-product">
@@ -73,7 +103,7 @@ const ProductItem = ({ Data }) => {
                             </span>
                           </div>
                           <div>
-                            <Link to={'/ShopCart'} className="btn btn-primary btn-sm">
+                            <button onClick={localData && localData ? () => toCart(elem) : toLoggin} className="btn btn-primary btn-sm">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width={16}
@@ -90,7 +120,7 @@ const ProductItem = ({ Data }) => {
                                 <line x1={5} y1={12} x2={19} y2={12} />
                               </svg>{" "}
                               Add
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </div>

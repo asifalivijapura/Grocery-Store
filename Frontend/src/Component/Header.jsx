@@ -1,16 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Grocerylogo from "../images/Grocerylogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa6";
-
+import { checkLocalStorageData } from "../localReducer/reducer";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
+  const [loggedin, setLoggedin] = useState(false)
+  const [userName, setUserName] = useState()
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
+
+  const handleLogOutUser = () => {
+    localStorage.removeItem('userData')
+    localStorage.removeItem('userId')
+    localStorage.removeItem('username')
+    setUserName()
+    setLoggedin(false)
+
+    dispatch(checkLocalStorageData());
+
+    navigate('/')
+    // window.location.reload();
+  }
+
+  useEffect(() => {
+    setUserName(localStorage.getItem('username') ? localStorage.getItem('username') : false);
+    setLoggedin(localStorage.getItem('userId') ? true : false)
+  }, [loggedin])
 
   return (
     <div>
@@ -63,8 +87,11 @@ const Header = () => {
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
-                >
-                  Account
+                >{userName &&
+                  userName ?
+                  `${userName}` :
+                  'Account'
+                  }
                 </Link>
                 <div
                   className="dropdown-menu sm-menu"
@@ -72,20 +99,25 @@ const Header = () => {
                 >
                   <div>
                     <div>
-                      <Link className="dropdown-item" to="/MyAccountSignIn">
-                        Sign in
-                      </Link>
+                      {loggedin &&
+                        loggedin ?
+                        <Link className="dropdown-item" to={'/'} onClick={handleLogOutUser}>
+                          Log Out
+                        </Link>
+                        :
+                        <Link className="dropdown-item" to={"/MyAccountSignIn"}>
+                          Sign in
+                        </Link>
+                      }
                     </div>
                   </div>
                 </div>
               </li>
-
               <li className="nav-item">
                 <Link className="nav-link" to="/ShopCart">
                   <FaCartPlus className="addToCart" />
                 </Link>
               </li>
-
             </ul>
           </div>
         </div>

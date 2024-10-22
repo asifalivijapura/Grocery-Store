@@ -8,6 +8,7 @@ import AdminLogin from './AdminLogin';
 import { MdDelete } from "react-icons/md";
 import DeleteProd from './DeleteProd';
 import { deleteFromData } from '../../adminReducer/action';
+import { errorTostify } from '../../toster/tostify';
 
 
 const Admin = ({ data, setShowHeader }) => {
@@ -34,18 +35,19 @@ const Admin = ({ data, setShowHeader }) => {
         setDeleteModal(false)
     }
 
-
     const handleDeleteClick = (data) => {
         setDeleteModal(true)
         setFormData(data)
     }
 
     const onDeleteClose = () => {
+        
         setDeleteModal(false)
     }
 
     const onLoggedOut = () => {
-        alert("You Are Logged Out From Admin Side")
+        const message = 'You Are Logged Out From Admin Side'
+        dispatch(errorTostify(message))
         localStorage.clear()
     }
 
@@ -130,7 +132,6 @@ const Admin = ({ data, setShowHeader }) => {
                                         </tr>
                                     )
                                 })
-
                             }
                         </tbody>
                     </table>

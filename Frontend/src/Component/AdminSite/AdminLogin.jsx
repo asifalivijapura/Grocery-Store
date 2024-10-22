@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { FaEye } from "react-icons/fa";
 import Modal from 'react-responsive-modal';
 import { Link } from 'react-router-dom';
-
+import { useDispatch } from "react-redux";
+import { errorTostify, successTostify } from '../../toster/tostify.js'
 
 const AdminLogin = ({ setShowHeader, login, data, setLogin }) => {
     // console.log("Dtaa", data)
     setShowHeader(false)
+
+    const dispatch = useDispatch()
 
     const [showPassword, setShowPassword] = useState(false)
     const [formData, setFormData] = useState({
@@ -25,11 +28,13 @@ const AdminLogin = ({ setShowHeader, login, data, setLogin }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (formData.email === data.adminEmail && formData.password === data.adminPassword) {
-            alert('Login SuccessFull')
+            const message = 'Login SuccessFull'
+            dispatch(successTostify(message))
             setLogin(false)
             localStorage.setItem("isLoggedIn", true)
         } else {
-            alert('Incorrect Email or PassWord')
+            const message = 'Incorrect Email or PassWord'
+            dispatch(errorTostify(message))
             setLogin(true)
         }
     }

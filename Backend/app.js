@@ -124,6 +124,7 @@ app.post("/viewcart", async (req, res) => {
         res.json({ cart: cart });
     } catch (error) {
         res.json({ error: error });
+        console.log("error", error)
     }
 });
 app.listen(port, () => console.log(`Backend app listening on port ${port}!`));

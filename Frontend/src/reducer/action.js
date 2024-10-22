@@ -28,7 +28,7 @@ export const registerData = createAsyncThunk('registerData', async (data) => {
     // console.log("Data in action login : ", data)
     try {
         const responce = await axios.post(`http://localhost:8080/registation`, data)
-        console.log("responce in action login", responce)
+        // console.log("responce in action login", responce)
         return responce
     } catch (error) {
         console.log("Error", error.message)
@@ -38,7 +38,7 @@ export const registerData = createAsyncThunk('registerData', async (data) => {
 
 
 export const loginData = createAsyncThunk('loginData', async (data) => {
-    console.log("Data in action login : ", data)
+    // console.log("Data in action login : ", data)
 
     try {
         const responce = await axios.post(`http://localhost:8080/login`, data)
