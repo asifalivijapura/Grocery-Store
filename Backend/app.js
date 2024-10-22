@@ -101,6 +101,7 @@ app.post("/login", async (req, res) => {
 // add to cart
 app.post("/addtocart", async (req, res) => {
     const { userId, productId, quantity } = req.body;
+    console.log(userId, productId, quantity)
     try {
         const cart = await Cart.create({
             user: userId,
@@ -109,6 +110,7 @@ app.post("/addtocart", async (req, res) => {
         res.json({ cart, status: 1 });
     } catch (error) {
         res.json({ error: error });
+        // console.log(error)
     }
 });
 app.post("/viewcart", async (req, res) => {
