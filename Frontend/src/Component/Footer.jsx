@@ -30,16 +30,14 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
           <div className="footer-bar">
             <div className="container text-center">
               <div className="footer-copy">
                 <div className="copyright">
-                  Project created by
+                  Project created by &nbsp;
                   <Link
-                    target="_blank"
                   >
                     AsifAli Vijapura
                   </Link>

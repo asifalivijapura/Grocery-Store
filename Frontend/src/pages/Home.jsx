@@ -11,8 +11,10 @@ import ShopPopularCategories from "../Component/HomeLandingPage/ShopPopularCateg
 import BarnerSlide from "../Component/HomeLandingPage/BarnerSlide";
 import { useDispatch, useSelector } from "react-redux";
 import { popularProduct } from "../reducer/action";
-const Home = () => {
 
+
+const Home = ({ setShowHeader }) => {
+  setShowHeader(true)
   const dispatch = useDispatch()
 
   useEffect(() => {
