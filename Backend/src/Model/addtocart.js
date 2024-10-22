@@ -6,17 +6,20 @@ const cartSchema = new mongoose.Schema({
         required: true,
         ref: "User", // Reference to the User model
     },
-    products: {
-        type: [mongoose.Schema.Types.ObjectId],
-        required: true,
-        ref: "Product",
-    },
-
-    quantity: {
-        type: Number,
-        required: true,
-        min: 0,
-    },
+    products: [
+        {
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                ref: "Product",
+            },
+            quantity: {
+                type: Number,
+                required: true,
+                min: 1, // Quantity should be at least 1
+            },
+        },
+    ],
 });
 
 const Cart = mongoose.model("Cart", cartSchema);

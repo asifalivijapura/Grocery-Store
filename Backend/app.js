@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Product = require("./src/Model/groceryProduct");
 const User = require("./src/Model/userModel");
+const Cart = require("./src/Model/addtocart");
+
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const app = express();
@@ -96,5 +98,17 @@ app.post("/login", async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 });
-
+// add to cart
+app.post("/addtocart", async (req, res) => {
+    const { userId, productId, quantity } = req.body;
+    try {
+        const cart = Cart.create({
+            user: userId,
+            products: [{ product: productId }, quantity],
+        });
+        res.json({ cart: cart, status: 1 });
+    } catch (error) {
+        res.json({ error: error });
+    }
+});
 app.listen(port, () => console.log(`Backend app listening on port ${port}!`));
