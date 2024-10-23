@@ -101,18 +101,39 @@ app.post("/login", async (req, res) => {
 // add to cart
 app.post("/addtocart", async (req, res) => {
     const { userId, productId, quantity } = req.body;
-    console.log(userId, productId, quantity)
+
     try {
-        const cart = await Cart.create({
-            user: userId,
-            products: [{ product: productId, quantity: quantity }],
-        });
+        // Check if the user already has a cart
+        let cart = await Cart.findOne({ user: userId });
+
+        if (cart) {
+            // Check if the product already exists in the cart
+            const existingProductIndex = cart.products.findIndex(p => p.product.toString() === productId);
+
+            if (existingProductIndex > -1) {
+                // If the product exists, update its quantity
+                cart.products[existingProductIndex].quantity += quantity;
+            } else {
+                // If the product does not exist, add it to the products array
+                cart.products.push({ product: productId, quantity: quantity });
+            }
+
+            // Save the updated cart
+            await cart.save();
+        } else {
+            // If no cart exists, create a new cart
+            cart = await Cart.create({
+                user: userId,
+                products: [{ product: productId, quantity: quantity }],
+            });
+        }
+
         res.json({ cart, status: 1 });
     } catch (error) {
-        res.json({ error: error });
-        // console.log(error)
+        res.status(500).json({ error: error.message });
     }
 });
+
 app.post("/viewcart", async (req, res) => {
     const { userId } = req.body;
     try {

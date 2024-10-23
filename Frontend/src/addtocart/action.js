@@ -11,3 +11,13 @@ export const addToCart = createAsyncThunk('addToCart', async (data) => {
     }
 
 })
+
+export const viewCartDetails = createAsyncThunk('viewCartDetails', async (userId) => {
+    console.log("viewCartDetails", userId)
+    try {
+        const responce = await axios.post('http://localhost:8080/viewcart', userId)
+        return responce
+    } catch (error) {
+        console.log("error", error.message)
+    }
+})

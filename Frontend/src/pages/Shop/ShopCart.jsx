@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import productimage1 from '../../images/product-img-1.jpg'
-import productimage2 from '../../images/product-img-2.jpg'
-import productimage3 from '../../images/product-img-3.jpg'
-import productimage4 from '../../images/product-img-4.jpg'
-import productimage5 from '../../images/product-img-5.jpg'
 import { MagnifyingGlass } from "react-loader-spinner";
 import ScrollToTop from "../ScrollToTop";
+import { useDispatch, useSelector } from "react-redux";
+import { viewCartDetails } from "../../addtocart/action";
 
 const ShopCart = () => {
 
+  const userId = localStorage.getItem('userId')
+  const userDetail = {
+    userId: userId
+  }
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(viewCartDetails(userDetail))
+  }, [viewCartDetails])
+
+  const Data = useSelector((state) => state?.addToCart?.viewcartData?.cartData?.data?.cart)
+  console.log("Data", Data?.products)
   // loading
   const [loaderStatus, setLoaderStatus] = useState(true);
   useEffect(() => {
@@ -38,9 +47,7 @@ const ShopCart = () => {
           </div>
         ) : (
           <>
-            <>
-              <ScrollToTop />
-            </>
+            <ScrollToTop />
             <>
               <div>
                 {/* section*/}
@@ -55,7 +62,6 @@ const ShopCart = () => {
                         <div className="card py-1 border-0 mb-8">
                           <div>
                             <h1 className="fw-bold">Shop Cart</h1>
-                            <p className="mb-0">Shopping in 382480</p>
                           </div>
                         </div>
                       </div>
@@ -64,432 +70,93 @@ const ShopCart = () => {
                     <div className="row">
                       <div className="col-lg-8 col-md-7">
                         <div className="py-3">
-                          {/* alert */}
-                          <div className="alert alert-danger p-2" role="alert">
-                            You’ve got FREE delivery. Start{" "}
-                            <Link to
-                              ="#!" className="alert-link">
-                              checkout now!
-                            </Link>
-                          </div>
                           <ul className="list-group list-group-flush">
-                            {/* list group */}
-                            <li className="list-group-item py-3 py-lg-0 px-0 border-top">
-                              {/* row */}
-                              <div className="row align-items-center">
-                                <div className="col-3 col-md-2">
-                                  {/* img */}{" "}
-                                  <img
-                                    src={productimage1}
-                                    alt="Ecommerce"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                                <div className="col-4 col-md-6">
-                                  {/* title */}
-                                  <h6 className="mb-0">Haldiram's Sev Bhujia</h6>
-                                  <span>
-                                    <small className="text-muted">.98 / lb</small>
-                                  </span>
-                                  {/* text */}
-                                  <div className="mt-2 small ">
-                                    {" "}
-                                    <Link
-                                      to
-                                      ="#!"
-                                      className="text-decoration-none text-inherit"
-                                    >
-                                      {" "}
-                                      <span className="me-1 align-text-bottom">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={16}
-                                          height={16}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          stroke="currentColor"
-                                          strokeWidth={2}
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          className="feather feather-trash-2 text-success"
-                                        >
-                                          <polyline points="3 6 5 6 21 6" />
-                                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                          <line x1={10} y1={11} x2={10} y2={17} />
-                                          <line x1={14} y1={11} x2={14} y2={17} />
-                                        </svg>
-                                      </span>
-                                      <span className="text-muted">Remove</span>
-                                    </Link>
-                                  </div>
-                                </div>
-                                {/* input group */}
-                                <div className="col-3 col-md-3 col-lg-2">
-                                  <div className="input-group  flex-nowrap justify-content-center  ">
-                                    <input
-                                      type="button"
-                                      defaultValue="-"
-                                      className="button-minus form-control  text-center flex-xl-none w-xl-30 w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                    <input
-                                      type="number"
-                                      step={1}
-                                      max={10}
-                                      defaultValue={1}
-                                      name="quantity"
-                                      className="quantity-field form-control text-center flex-xl-none w-xl-30 w-xxl-10 px-0 "
-                                    />
-                                    <input
-                                      type="button"
-                                      defaultValue="+"
-                                      className="button-plus form-control  text-center flex-xl-none w-xl-30  w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                  </div>
-                                </div>
-                                {/* price */}
-                                <div className="col-2 text-lg-end text-start text-md-end col-md-2">
-                                  <span className="fw-bold">₹5.00</span>
-                                </div>
-                              </div>
-                            </li>
-                            {/* list group */}
-                            <li className="list-group-item py-3 py-lg-0 px-0">
-                              {/* row */}
-                              <div className="row align-items-center">
-                                <div className="col-3 col-md-2">
-                                  {/* img */}{" "}
-                                  <img
-                                    src={productimage2}
-                                    alt="Ecommerce"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                                <div className="col-4 col-md-6">
-                                  {/* title */}
-                                  <h6 className="mb-0">NutriChoice Digestive </h6>
-                                  <span>
-                                    <small className="text-muted">250g</small>
-                                  </span>
-                                  {/* text */}
-                                  <div className="mt-2 small ">
-                                    {" "}
-                                    <Link
-                                      to
-                                      ="#!"
-                                      className="text-decoration-none text-inherit"
-                                    >
-                                      {" "}
-                                      <span className="me-1 align-text-bottom">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={16}
-                                          height={16}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          stroke="currentColor"
-                                          strokeWidth={2}
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          className="feather feather-trash-2 text-success"
-                                        >
-                                          <polyline points="3 6 5 6 21 6" />
-                                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                          <line x1={10} y1={11} x2={10} y2={17} />
-                                          <line x1={14} y1={11} x2={14} y2={17} />
-                                        </svg>
-                                      </span>
-                                      <span className="text-muted">Remove</span>
-                                    </Link>
-                                  </div>
-                                </div>
-                                {/* input group */}
-                                <div className="col-3 col-md-3 col-lg-2">
-                                  <div className="input-group  flex-nowrap justify-content-center  ">
-                                    <input
-                                      type="button"
-                                      defaultValue="-"
-                                      className="button-minus form-control  text-center flex-xl-none w-xl-30 w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                    <input
-                                      type="number"
-                                      step={1}
-                                      max={10}
-                                      defaultValue={1}
-                                      name="quantity"
-                                      className="quantity-field form-control text-center flex-xl-none w-xl-30 w-xxl-10 px-0 "
-                                    />
-                                    <input
-                                      type="button"
-                                      defaultValue="+"
-                                      className="button-plus form-control  text-center flex-xl-none w-xl-30  w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                  </div>
-                                </div>
-                                {/* price */}
-                                <div className="col-2 text-lg-end text-start text-md-end col-md-2">
-                                  <span className="fw-bold text-danger">₹20.00</span>
-                                  <div className="text-decoration-line-through text-muted small">
-                                    ₹26.00
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            {/* list group */}
-                            <li className="list-group-item py-3 py-lg-0 px-0">
-                              {/* row */}
-                              <div className="row align-items-center">
-                                <div className="col-3 col-md-2">
-                                  {/* img */}{" "}
-                                  <img
-                                    src={productimage3}
-                                    alt="Ecommerce"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                                <div className="col-4 col-md-6">
-                                  {/* title */}
-                                  <h6 className="mb-0">Cadbury 5 Star Chocolate</h6>
-                                  <span>
-                                    <small className="text-muted">1 kg</small>
-                                  </span>
-                                  {/* text */}
-                                  <div className="mt-2 small ">
-                                    {" "}
-                                    <Link
-                                      to
-                                      ="#!"
-                                      className="text-decoration-none text-inherit"
-                                    >
-                                      {" "}
-                                      <span className="me-1 align-text-bottom">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={16}
-                                          height={16}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          stroke="currentColor"
-                                          strokeWidth={2}
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          className="feather feather-trash-2 text-success"
-                                        >
-                                          <polyline points="3 6 5 6 21 6" />
-                                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                          <line x1={10} y1={11} x2={10} y2={17} />
-                                          <line x1={14} y1={11} x2={14} y2={17} />
-                                        </svg>
-                                      </span>
-                                      <span className="text-muted">Remove</span>
-                                    </Link>
-                                  </div>
-                                </div>
-                                {/* input group */}
-                                <div className="col-3 col-md-3 col-lg-2">
-                                  <div className="input-group  flex-nowrap justify-content-center  ">
-                                    <input
-                                      type="button"
-                                      defaultValue="-"
-                                      className="button-minus form-control  text-center flex-xl-none w-xl-30 w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                    <input
-                                      type="number"
-                                      step={1}
-                                      max={10}
-                                      defaultValue={1}
-                                      name="quantity"
-                                      className="quantity-field form-control text-center flex-xl-none w-xl-30 w-xxl-10 px-0 "
-                                    />
-                                    <input
-                                      type="button"
-                                      defaultValue="+"
-                                      className="button-plus form-control  text-center flex-xl-none w-xl-30  w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                  </div>
-                                </div>
-                                {/* price */}
-                                <div className="col-2 text-lg-end text-start text-md-end col-md-2">
-                                  <span className="fw-bold">₹15.00</span>
-                                  <div className="text-decoration-line-through text-muted small">
-                                    ₹20.00
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            {/* list group */}
-                            <li className="list-group-item py-3 py-lg-0 px-0">
-                              {/* row */}
-                              <div className="row align-items-center">
-                                <div className="col-3 col-md-2">
-                                  {/* img */}{" "}
-                                  <img
-                                    src={productimage4}
-                                    alt="Ecommerce"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                                <div className="col-4 col-md-6">
-                                  {/* title */}
-                                  <h6 className="mb-0">Onion Flavour Potato</h6>
-                                  <span>
-                                    <small className="text-muted">250g</small>
-                                  </span>
-                                  {/* text */}
-                                  <div className="mt-2 small ">
-                                    {" "}
-                                    <Link
-                                      to
-                                      ="#!"
-                                      className="text-decoration-none text-inherit"
-                                    >
-                                      {" "}
-                                      <span className="me-1 align-text-bottom">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={16}
-                                          height={16}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          stroke="currentColor"
-                                          strokeWidth={2}
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          className="feather feather-trash-2 text-success"
-                                        >
-                                          <polyline points="3 6 5 6 21 6" />
-                                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                          <line x1={10} y1={11} x2={10} y2={17} />
-                                          <line x1={14} y1={11} x2={14} y2={17} />
-                                        </svg>
-                                      </span>
-                                      <span className="text-muted">Remove</span>
-                                    </Link>
-                                  </div>
-                                </div>
-                                {/* input group */}
-                                <div className="col-3 col-md-3 col-lg-2">
-                                  <div className="input-group  flex-nowrap justify-content-center  ">
-                                    <input
-                                      type="button"
-                                      defaultValue="-"
-                                      className="button-minus form-control  text-center flex-xl-none w-xl-30 w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                    <input
-                                      type="number"
-                                      step={1}
-                                      max={10}
-                                      defaultValue={1}
-                                      name="quantity"
-                                      className="quantity-field form-control text-center flex-xl-none w-xl-30 w-xxl-10 px-0 "
-                                    />
-                                    <input
-                                      type="button"
-                                      defaultValue="+"
-                                      className="button-plus form-control  text-center flex-xl-none w-xl-30  w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                  </div>
-                                </div>
-                                {/* price */}
-                                <div className="col-2 text-lg-end text-start text-md-end col-md-2">
-                                  <span className="fw-bold">₹15.00</span>
-                                  <div className="text-decoration-line-through text-muted small">
-                                    ₹20.00
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                            {/* list group */}
-                            <li className="list-group-item py-3 py-lg-0 px-0 border-bottom">
-                              {/* row */}
-                              <div className="row align-items-center">
-                                <div className="col-3 col-md-2">
-                                  {/* img */}{" "}
-                                  <img
-                                    src={productimage5}
-                                    alt="Ecommerce"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                                <div className="col-4 col-md-6">
-                                  {/* title */}
-                                  <h6 className="mb-0">Salted Instant Popcorn </h6>
-                                  <span>
-                                    <small className="text-muted">100g</small>
-                                  </span>
-                                  {/* text */}
-                                  <div className="mt-2 small ">
-                                    {" "}
-                                    <Link
-                                      to
-                                      ="#!"
-                                      className="text-decoration-none text-inherit"
-                                    >
-                                      {" "}
-                                      <span className="me-1 align-text-bottom">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={16}
-                                          height={16}
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          stroke="currentColor"
-                                          strokeWidth={2}
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          className="feather feather-trash-2 text-success"
-                                        >
-                                          <polyline points="3 6 5 6 21 6" />
-                                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                          <line x1={10} y1={11} x2={10} y2={17} />
-                                          <line x1={14} y1={11} x2={14} y2={17} />
-                                        </svg>
-                                      </span>
-                                      <span className="text-muted">Remove</span>
-                                    </Link>
-                                  </div>
-                                </div>
-                                {/* input group */}
-                                <div className="col-3 col-md-3 col-lg-2">
-                                  <div className="input-group  flex-nowrap justify-content-center  ">
-                                    <input
-                                      type="button"
-                                      defaultValue="-"
-                                      className="button-minus form-control  text-center flex-xl-none w-xl-30 w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                    <input
-                                      type="number"
-                                      step={1}
-                                      max={10}
-                                      defaultValue={1}
-                                      name="quantity"
-                                      className="quantity-field form-control text-center flex-xl-none w-xl-30 w-xxl-10 px-0 "
-                                    />
-                                    <input
-                                      type="button"
-                                      defaultValue="+"
-                                      className="button-plus form-control  text-center flex-xl-none w-xl-30  w-xxl-10 px-0  "
-                                      data-field="quantity"
-                                    />
-                                  </div>
-                                </div>
-                                {/* price */}
-                                <div className="col-2 text-lg-end text-start text-md-end col-md-2">
-                                  <span className="fw-bold">₹15.00</span>
-                                  <div className="text-decoration-line-through text-muted small">
-                                    ₹25.00
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
+                            {Data?.products &&
+                              Data?.products?.map((elem, idx) => {
+                                return (
+                                  <li className="list-group-item py-3 py-lg-0 px-0 border-top ">
+                                    {/* row */}
+                                    <div className="row align-items-center">
+                                      <div className="col-3 col-md-2">
+                                        {/* img */}
+                                        <img
+                                          src={elem?.product?.imageUrl}
+                                          alt="Ecommerce"
+                                          className="img-fluid"
+                                        />
+                                      </div>
+                                      <div className="col-4 col-md-6">
+                                        {/* title */}
+                                        <h6 className="mb-0">{elem?.product?.name}</h6>
+                                        <span>
+                                          <small className="text-muted">{elem?.product?.category}</small>
+                                        </span>
+                                        {/* text */}
+                                        <div className="mt-2 small ">
+                                          {" "}
+                                          <Link
+                                            to
+                                            ="#!"
+                                            className="text-decoration-none text-inherit"
+                                          >
+                                            {" "}
+                                            <span className="me-1 align-text-bottom">
+                                              <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width={16}
+                                                height={16}
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth={2}
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                className="feather feather-trash-2 text-success"
+                                              >
+                                                <polyline points="3 6 5 6 21 6" />
+                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                <line x1={10} y1={11} x2={10} y2={17} />
+                                                <line x1={14} y1={11} x2={14} y2={17} />
+                                              </svg>
+                                            </span>
+                                            <span className="text-muted">Remove</span>
+                                          </Link>
+                                        </div>
+                                      </div>
+                                      {/* input group */}
+                                      <div className="col-3 col-md-3 col-lg-2">
+                                        <div className="input-group  flex-nowrap justify-content-center  ">
+                                          <input
+                                            type="button"
+                                            defaultValue="-"
+                                            className="button-minus form-control  text-center flex-xl-none w-xl-30 w-xxl-10 px-0  "
+                                            data-field="quantity"
+                                          />
+                                          <input
+                                            type="number"
+                                            step={1}
+                                            max={10}
+                                            defaultValue={1}
+                                            name="quantity"
+                                            className="quantity-field form-control text-center flex-xl-none w-xl-30 w-xxl-10 px-0 "
+                                          />
+                                          <input
+                                            type="button"
+                                            defaultValue="+"
+                                            className="button-plus form-control  text-center flex-xl-none w-xl-30  w-xxl-10 px-0  "
+                                            data-field="quantity"
+                                          />
+                                        </div>
+                                      </div>
+                                      {/* price */}
+                                      <div className="col-2 text-lg-end text-start text-md-end col-md-2">
+                                        <span className="fw-bold">₹{elem?.product?.price}</span>
+                                      </div>
+                                    </div>
+                                  </li>
+                                )
+                              })
+                            }
                           </ul>
                           {/* btn */}
                           <div className="d-flex justify-content-between mt-4">

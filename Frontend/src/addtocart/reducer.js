@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addToCart } from "./action";
+import { addToCart, viewCartDetails } from "./action";
 
 
 const userAddToCart = createSlice({
@@ -8,6 +8,11 @@ const userAddToCart = createSlice({
         addToCartHomePage: {
             isLoading: false,
             data: null,
+            isError: false,
+        },
+        viewcartData: {
+            isLoading: false,
+            cartData: null,
             isError: false,
         }
     },
@@ -24,6 +29,17 @@ const userAddToCart = createSlice({
             })
             .addCase(addToCart.rejected, (state, action) => {
                 state.addToCartHomePage.isError = true;
+            })
+            // viewCartData
+            .addCase(viewCartDetails.fulfilled, (state, action) => {
+                state.viewcartData.isLoading = false;
+                state.viewcartData.cartData = action.payload;
+            })
+            .addCase(viewCartDetails.pending, (state, action) => {
+                state.viewcartData.isLoading = true;
+            })
+            .addCase(viewCartDetails.rejected, (state, action) => {
+                state.viewcartData.isError = true;
             })
     }
 })
