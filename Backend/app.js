@@ -100,17 +100,40 @@ app.post("/login", async (req, res) => {
 });
 // add to cart
 app.post("/addtocart", async (req, res) => {
-    const { userId, productId, quantity } = req.body;
+    const { userId, products } = req.body; // Expecting products to be an array
     try {
-        const cart = await Cart.create({
-            user: userId,
-            products: [{ product: productId, quantity: quantity }],
-        });
+        // Find the existing cart for the user
+        let cart = await Cart.findOne({ user: userId });
+
+        // If no cart exists, create a new one
+        if (!cart) {
+            cart = new Cart({ user: userId, products: [] });
+        }
+        // Loop through the products array and add each product
+        for (const { productId, quantity } of products) {
+            // Check if the product already exists in the cart
+            const existingProductIndex = cart.products.findIndex(
+                (item) => item.product.toString() === productId
+            );
+
+            if (existingProductIndex > -1) {
+                // If the product already exists, update the quantity
+                cart.products[existingProductIndex].quantity += quantity;
+            } else {
+                // If the product does not exist, add it to the cart
+                cart.products.push({ product: productId, quantity });
+            }
+        }
+
+        // Save the updated cart
+        await cart.save();
+
         res.json({ cart, status: 1 });
     } catch (error) {
-        res.json({ error: error });
+        res.json({ error: error.message });
     }
 });
+
 app.post("/viewcart", async (req, res) => {
     const { userId } = req.body;
     try {
@@ -124,7 +147,7 @@ app.post("/viewcart", async (req, res) => {
         res.json({ cart: cart });
     } catch (error) {
         res.json({ error: error });
-        console.log("error", error)
+        console.log("error", error);
     }
 });
 app.listen(port, () => console.log(`Backend app listening on port ${port}!`));
