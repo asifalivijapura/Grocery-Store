@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { popularProduct } from "../reducer/action";
 
 
-const Home = ({ setShowHeader }) => {
+const Home = ({ setShowHeader, searchItem }) => {
   setShowHeader(true)
   const dispatch = useDispatch()
 
@@ -56,7 +56,7 @@ const Home = ({ setShowHeader }) => {
                 <Barner />
                 <ShopPopularCategories />
                 <BarnerSlide />
-                <ProductItem Data={Data} />
+                <ProductItem Data={Data} searchItem={searchItem} />
               </>
             }
           </>

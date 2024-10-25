@@ -14,7 +14,7 @@ const localCheckData = createSlice({
             state.dataAvailable = data ? true : false;
         },
     },
-    extraReducers: () => {}
+    extraReducers: () => { }
 })
 
 export const { checkLocalStorageData } = localCheckData.actions;

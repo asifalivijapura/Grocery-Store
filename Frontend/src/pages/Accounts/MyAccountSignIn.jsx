@@ -5,10 +5,8 @@ import ScrollToTop from "../ScrollToTop";
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
-import { Bounce, toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import { errorTostify, successTostify } from "../../toster/tostify";
-
 
 const MyAccountSignIn = ({ setShowHeader }) => {
 
@@ -20,20 +18,20 @@ const MyAccountSignIn = ({ setShowHeader }) => {
     email: '',
     password: ''
   });
-  const mesaage = "Login Successfull"
 
+  const mesaage = "Login Successfull"
 
   const loginData = async (data) => {
     // console.log("Data in action login: ", data);
 
     try {
       const response = await axios.post(`http://localhost:8080/login`, data).then(response => {
-        console.log("respponse", response);
+        // console.log("respponse", response);
         if (response?.data?.status === 1) {
           dispatch(successTostify(mesaage))
           // console.log("Login success: ", response?.data);
           localStorage.setItem('userData', response?.data?.token)
-          const decodedToken = jwtDecode(response?.data?.token);
+          const decodedToken = jwtDecode(response?.data?.token)
           // console.log("decoded Token", decodedToken)
           localStorage.setItem('userId', decodedToken?.userId)
           localStorage.setItem('username', decodedToken?.username)
@@ -42,6 +40,7 @@ const MyAccountSignIn = ({ setShowHeader }) => {
           setShowHeader(true)
         }
       })
+
       // console.log("responece", response)
       return response;
     }
@@ -58,6 +57,8 @@ const MyAccountSignIn = ({ setShowHeader }) => {
       [name]: value
     });
   };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

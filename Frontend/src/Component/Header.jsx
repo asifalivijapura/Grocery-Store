@@ -5,7 +5,7 @@ import { FaCartPlus } from "react-icons/fa6";
 import { checkLocalStorageData } from "../localReducer/reducer";
 import { useDispatch } from "react-redux";
 
-const Header = () => {
+const Header = ({ searchItem, handleChangeOnSearch }) => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -16,8 +16,7 @@ const Header = () => {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
-
-
+  
   const handleLogOutUser = () => {
     localStorage.removeItem('userData')
     localStorage.removeItem('userId')
@@ -30,6 +29,8 @@ const Header = () => {
     navigate('/')
     // window.location.reload();
   }
+
+
 
   useEffect(() => {
     setUserName(localStorage.getItem('username') ? localStorage.getItem('username') : false);
@@ -47,7 +48,13 @@ const Header = () => {
               alt="eCommerce HTML Template"
             />
           </Link>
-
+          <input
+            className="form-control responsivesearch "
+            placeholder="Type to search..."
+            value={searchItem}
+            onChange={handleChangeOnSearch}
+            style={{ width: "35%" }}
+          />
           <button
             className="navbar-toggler"
             type="button"

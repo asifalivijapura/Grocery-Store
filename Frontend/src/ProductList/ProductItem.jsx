@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { checkLocalStorageData } from "../localReducer/reducer";
 import { addToCart } from "../addtocart/action";
+import { successTostify } from "../toster/tostify";
 
-const ProductItem = ({ Data }) => {
+const ProductItem = ({ Data, searchItem }) => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -26,11 +27,18 @@ const ProductItem = ({ Data }) => {
       quantity
     }
     dispatch(addToCart(Data))
+    const msg = 'Product Added Successfull'
+    dispatch(successTostify(msg))
   }
 
   const toLoggin = () => {
     navigate('/MyAccountSignIn')
   }
+  const filteredProducts = searchItem?.length >= 2
+    ? Data?.products?.filter((product) =>
+      product?.name?.toLowerCase().includes(searchItem.toLowerCase())
+    )
+    : Data?.products;
 
   return (
     <div>
@@ -50,8 +58,8 @@ const ProductItem = ({ Data }) => {
             </div>
           </div>
           <div className="row g-4 row-cols-lg-5 row-cols-2 row-cols-md-3">
-            {Data?.products &&
-              Data?.products.slice(0, 10).map((elem, idx) => {
+            {filteredProducts &&
+              filteredProducts.slice(0, 10).map((elem, idx) => {
                 // console.log("elem", elem)
                 return (
                   <div className="col fade-zoom" key={idx}>
