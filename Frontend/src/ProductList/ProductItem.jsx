@@ -5,6 +5,7 @@ import { checkLocalStorageData } from "../localReducer/reducer";
 import { addToCart } from "../addtocart/action";
 
 const ProductItem = ({ Data }) => {
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -18,17 +19,17 @@ const ProductItem = ({ Data }) => {
   const toCart = (data) => {
     const productId = data?._id
     const userId = localStorage.getItem('userId')
-    const quentity = 1
+    const quantity = 1
     const Data = {
       userId,
       productId,
-      quentity
+      quantity
     }
     dispatch(addToCart(Data))
   }
 
   const toLoggin = () => {
-    navigate('MyAccountSignIn')
+    navigate('/MyAccountSignIn')
   }
 
   return (
