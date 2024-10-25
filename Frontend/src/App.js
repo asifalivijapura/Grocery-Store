@@ -27,22 +27,36 @@ import MyAccountSignUp from "./pages/Accounts/MyAccountSignUp";
 import Admin from "./Component/AdminSite/Admin";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+
 const App = () => {
   const data = {
     adminEmail: "asifali54321@gmail.com",
     adminPassword: "AsifAli098"
   }
+  
   const [showHeader, setShowHeader] = useState(true)
+
+  const [searchItem, setSearchItem] = useState()
+
+  const handleChangeOnSearch = (e) => {
+    const searchTerms = e.target.value;
+    if (searchTerms.length > 2) {
+      setSearchItem(searchTerms);
+    } else {
+      setSearchItem(null); // or set it to an empty string
+    }
+  };
+
   return (
     <div>
       <Router>
         {showHeader && showHeader ?
-          <Header />
+          <Header searchItem={searchItem} handleChangeOnSearch={handleChangeOnSearch} />
           : null
         }
         <ToastContainer />
         <Routes>
-          <Route path="/" element={<Home setShowHeader={setShowHeader} />} />
+          <Route path="/" element={<Home setShowHeader={setShowHeader} searchItem={searchItem} />} />
           {/* Shop pages */}
           <Route path="/Product" element={<Shop />} />
           <Route path="/ShopGridCol3" element={<ShopGridCol3 />} />
@@ -82,4 +96,3 @@ const App = () => {
 };
 
 export default App;
-
